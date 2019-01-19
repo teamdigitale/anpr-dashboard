@@ -25,10 +25,10 @@ jobs:
             cd /tmp/gh-pages
             git checkout master
             if [ `curl -s -w "%{http_code}" --compress -o /tmp/dashboardData.json https://api.daf.teamdigitale.it/anpr/dashboardData.json` = "200" ]; then
-              echo "Data updated"; cp /tmp/dashboardData.json ./
+              echo "Data updated"; cp /tmp/dashboardData.json ./ && \
+              git commit -a -m "Automated deployment to GitHub Pages: ${CIRCLE_SHA1}" --allow-empty && \
+              git push origin master
             fi
-            git commit -a -m "Automated deployment to GitHub Pages: ${CIRCLE_SHA1}" --allow-empty
-            git push origin master
 
 
 workflows:

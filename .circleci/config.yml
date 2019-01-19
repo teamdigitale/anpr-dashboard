@@ -42,9 +42,12 @@ jobs:
 workflows:
   version: 2
   update-and-deploy:
+    triggers:
+      - schedule:
+        cron: "0/30 * * * *"
+        filters:
+          branches:
+            only:
+              - master
     jobs:
       - deploy-production:
-          filters:
-            branches:
-              only:
-                - master

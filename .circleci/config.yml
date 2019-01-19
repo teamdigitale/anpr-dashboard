@@ -23,7 +23,6 @@ jobs:
             git config --global user.name "Deploy Bot"
 
             cd /tmp/gh-pages
-            ls -la 
 
             if [ `curl -s -w "%{http_code}" --compress -o /tmp/dashboardData.json https://api.daf.teamdigitale.it/anpr/dashboardData.json` = "200" ]; then
               echo "dashboard data updated" && \

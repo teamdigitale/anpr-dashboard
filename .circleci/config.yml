@@ -1,0 +1,41 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/ for more details
+#
+
+defaults: &defaults
+  docker:
+      - image: circleci/python:3.6
+
+version: 2
+jobs:
+  deploy-production:
+    <<: *defaults
+    steps:
+      # Deploy the site to GitHub Pages
+      #- add_ssh_keys: *add_ssh_keys
+      - checkout:
+          path: /tmp/gh-pages
+      - deploy:
+          name: Deploy
+          command: |
+            git config --global user.email no-reply@teamdigitale.governo.it
+            git config --global user.name "Deploy Bot"
+
+            cd /tmp/gh-pages
+            git checkout master
+            if [ `curl -s -w "%{http_code}" --compress -o /tmp/dashboardData.json https://api.daf.teamdigitale.it/anpr/dashboardData.json` = "200" ]; then
+              echo "Data updated"; cp /tmp/dashboardData.json ./
+            git commit -a -m "Automated deployment to GitHub Pages: ${CIRCLE_SHA1}" --allow-empty
+            git push origin master
+
+
+workflows:
+  version: 2
+  update-and-deploy:
+    jobs:
+      - deploy-production:
+          filters:
+            branches:
+              only:
+                - master

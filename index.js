@@ -6,7 +6,7 @@
 //test
 //var dataUrl = "https://api.daf.teamdigitale.test/anpr/dashboardData.json";
 //prod
-var dataUrl = "/dashboardData.json";
+var dataUrl = "./dashboardData.json";
 //localhost
 //var dataUrl = "http://localhost:4000/anpr/dashboardData.json";
 
@@ -14,7 +14,7 @@ var dataUrl = "/dashboardData.json";
 //test
 //var predictionUrl = "https://api.daf.teamdigitale.test/anpr/dprevisioni";
 //prod
-var predictionUrl = "/previsioni.json";
+var predictionUrl = "./previsioni.json";
 //localhost
 //var predictionUrl = "http://localhost:4000/anpr/previsioni";
 

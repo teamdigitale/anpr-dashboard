@@ -1,0 +1,321 @@
+body {
+    background-color: white !important;
+}
+
+#search-button {
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    box-shadow: 0px !important;
+    border: none;
+}
+
+#search-button svg {
+    width: 30px;
+    height: 30px;
+}
+
+#tags {
+    border-radius: 3px;
+}
+
+.popup-content {
+    /*Hides pop-up content when there is no "active" class */
+    visibility: hidden;
+}
+
+.popup-div {
+    position: absolute;
+    top: 20%;
+    left: 20%;
+}
+
+.popup-content.active {
+    /*Shows pop-up content when "active" class is present */
+    visibility: visible;
+    font-size: 25px;
+}
+
+.top-buffer {
+    margin-top: 20px;
+}
+
+div.point-tooltip {
+    position: absolute;
+    text-align: center;
+    height: auto;
+    padding: 4px;
+    font: 12px;
+    background: #282828;
+    margin: 5px;
+    border: 5px;
+    border-radius: 5px;
+    color: white;
+    pointer-events: none;
+}
+
+div.info-tooltip {
+    position: absolute;
+    top: 0;
+    text-align: left;
+    max-width: 200px;
+    height: auto;
+    padding: 12px;
+    font: 12px;
+    background: #282828;
+    margin: 5px;
+    border: 0px;
+    border-radius: 5px;
+    color: white;
+    pointer-events: none;
+}
+
+.container {
+    max-width: 100% !important;
+}
+
+#map-cluster-subentro {
+    /* margin-left: 0px;
+    margin-right: 5px; */
+    width: 100%;
+    min-width: 150px;
+    height: 600px;
+}
+
+#map-cluster-presubentro {
+    /* margin-left: 0px;
+    margin-right: 5px; */
+    width: 100%;
+    min-width: 150px;
+    height: 600px;
+}
+
+#map-subentro {
+    /* margin-left: 0px;
+    margin-right: 5px; */
+    width: 100%;
+    min-width: 150px;
+    height: 600px;
+}
+
+#map-presubentro {
+    /* margin-left: 5px;
+    margin-right: 0px; */
+    width: 100%;
+    min-width: 150px;
+    height: 600px;
+}
+
+.mapboxgl-ctrl {
+    font-size: 13px;
+    z-index: 1;
+}
+
+.line {
+    fill: none;
+    stroke-width: 2px;
+    stroke: steelBlue;
+}
+
+.legendLine {
+    fill: none;
+    stroke-width: 2px;
+    stroke: steelBlue;
+}
+
+.axisblack text {
+    fill: lightgrey;
+    font-size: 10px;
+}
+
+.axisblack path {
+    stroke: none;
+}
+
+.tick line {
+    stroke: none;
+}
+
+.axisorange text {
+    fill: lightgrey;
+    font-size: 10px;
+}
+
+.axisorange path {
+    stroke: none;
+}
+
+.axisgreen text {
+    fill: lightgrey;
+    font-size: 10px;
+}
+
+.axisgreen path {
+    stroke: none;
+}
+
+.axis text {
+    fill: lightgrey;
+    font-size: 13px;
+    text-anchor: end;
+}
+
+.axis path {
+    stroke: none;
+}
+
+#areablack-subentro {
+    fill: grey;
+    opacity: 0.3;
+}
+
+#areablack-presubentro {
+    fill: grey;
+    opacity: 0.3;
+}
+
+.domain {
+    stroke: none;
+}
+
+.area {
+    fill: white;
+    stroke: none !important;
+}
+
+.grid line {
+    stroke: lightgrey;
+    stroke-opacity: 0.7;
+    shape-rendering: crispEdges;
+    stroke-dasharray: 4,4;
+}
+
+.grid path {
+    stroke-width: 0;
+}
+
+.info-box {
+    text-align: center;
+    padding: 80px 0 !important;
+    background-color: var(--white);
+    color: var(--primary);
+    border: 1px solid var(--light);
+    border-radius: 0.25rem !important;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    text-align: center !important;
+}
+
+.shadow-card {
+    padding: 1rem !important;
+    border: 1px solid var(--light);
+    border-radius: 0.25rem !important;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.popup-class {
+    border: 1px solid var(--light);
+    border-radius: 0.25rem !important;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.footer-class {
+    position: fixed;
+    bottom: 0;
+    z-index: 1030;
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+    border-top: 2px solid;
+    border-color: var(--light);
+    background-color: #FFF;
+}
+
+.mapboxgl-ctrl-geocoder, .mapboxgl-ctrl-group, .mapboxgl-ctrl {
+    border: 1px solid var(--light);
+    box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.mapboxgl-ctrl-bottom-left > .mapboxgl-ctrl {
+    border: none !important;
+}
+
+.tabulator {
+    border: none;
+}
+
+.tabulator .tabulator-header .tabulator-col {
+    border: none;
+}
+
+.tabulator-page.active {
+    background-color: var(--primary) !important;
+    color: #FFF !important;
+    border-color: var(--primary) !important;
+}
+
+.tabulator-page:not(.disabled):not(.active):hover {
+    color: var(--primary) !important;
+}
+
+.tabulator-header {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    color: var(--primary) !important;
+    border-color: var(--primary) !important;
+}
+
+.tabulator-footer {
+    border-color: var(--primary) !important; 
+}
+
+.tabulator-row:last-child {
+    border-color: transparent;
+}
+
+.tabulator-arrow {
+    border-bottom-color: var(--primary) !important;
+}
+
+div.tabulator-cell[data-field="percentuale_comuni_in_presubentro"] > div {
+    background-color: orange !important;
+}
+
+div.tabulator-cell[data-field="percentuale_comuni_inattivi"] > div {
+    background-color: black !important;
+}
+
+div.tabulator-cell[data-field="percentuale_comuni_subentrati"] > div {
+    background-color: lime !important;
+}
+
+.ui-widget {
+    font-size: 18px;
+}
+
+.tabulator .tabulator-header .tabulator-col,
+.tabulator .tabulator-header .tabulator-col-row-handle {
+    white-space: normal;
+}
+
+span {
+    font-size: 10px;
+}
+
+.overflow-div {
+    overflow: visible;
+}
+
+::-webkit-input-placeholder {
+   text-align: center;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   text-align: center;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   text-align: center;  
+}
+
+:-ms-input-placeholder {  
+   text-align: center; 
+}

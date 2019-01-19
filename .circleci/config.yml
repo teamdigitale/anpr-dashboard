@@ -44,10 +44,10 @@ workflows:
   update-and-deploy:
     triggers:
       - schedule:
-        cron: "0/30 * * * *"
-        filters:
-          branches:
-            only:
-              - master
+          cron: "0/30 * * * *"
+          filters:
+            branches:
+              only:
+                - master
     jobs:
       - deploy-production:

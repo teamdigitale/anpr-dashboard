@@ -44,7 +44,7 @@ workflows:
   update-dashboard:
     triggers:
       - schedule:
-          cron: "* * * * *"
+          cron: "*/30 * * * *"
           filters:
             branches:
               only:

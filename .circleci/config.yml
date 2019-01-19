@@ -50,4 +50,4 @@ workflows:
               only:
                 - master
     jobs:
-      - update:
+      - update

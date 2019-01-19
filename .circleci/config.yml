@@ -9,7 +9,7 @@ defaults: &defaults
 
 version: 2
 jobs:
-  deploy-production:
+  update:
     <<: *defaults
     steps:
       # Deploy the site to GitHub Pages
@@ -17,7 +17,7 @@ jobs:
       - checkout:
           path: /tmp/gh-pages
       - deploy:
-          name: Deploy
+          name: Update data
           command: |
             git config --global user.email no-reply@teamdigitale.governo.it
             git config --global user.name "Deploy Bot"
@@ -41,13 +41,13 @@ jobs:
 
 workflows:
   version: 2
-  update-and-deploy:
+  update-dashboard:
     triggers:
       - schedule:
-          cron: "0/30 * * * *"
+          cron: "* * * * *"
           filters:
             branches:
               only:
                 - master
     jobs:
-      - deploy-production:
+      - update:

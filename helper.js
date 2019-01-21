@@ -347,6 +347,7 @@ var loadMap = (map, source, layer) => {
     }*/
     
     // Test cluster
+    /*
     map.addLayer({
         id: "clusters",
         type: "circle",
@@ -379,6 +380,7 @@ var loadMap = (map, source, layer) => {
             ]
         }
     });
+    */
 
     map.addLayer({
         id: "cluster-count",
@@ -427,7 +429,7 @@ var loadMap = (map, source, layer) => {
     });
 		
 	//map.setFilter(layerId) // layer.mapboxFilter);
-	map.setFilter(layerId)
+	//map.setFilter(layerId)
 	//POPUP ON EACH COMUNE                           
 	var popup = new mapboxgl.Popup({
             closeButton: false,

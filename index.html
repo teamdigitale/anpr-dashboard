@@ -15,32 +15,7 @@
   <link rel="stylesheet" type="text/css" href="./css/style.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
 
-  <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.js"></script>
-  <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
-  <script src="https://unpkg.com/tabulator-tables@4.0.5/dist/js/tabulator.min.js"></script>
-  <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/tabulator/2.11.0/tabulator.min.js"></script>
-  <script src="https://d3js.org/d3.v4.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.js"></script>
-
-  <script type="text/javascript">
-    WebFontConfig = {
-      google: {
-        families: ['Titillium+Web:300,400,600,700,400italic:latin']
-      }
-    };
-    (function () {
-      var wf = document.createElement('script');
-      wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-      wf.type = 'text/javascript';
-      wf.async = 'true';
-      var s = document.getElementsByTagName('script')[0];
-      s.parentNode.insertBefore(wf, s);
-    })();
-  </script>
-
+  
   <title>Dashboard ANPR</title>
 </head>
 
@@ -49,7 +24,8 @@
     <!--Content shown when popup is not displayed-->
     <div class="row justify-content-center">
       <div class="col-sm-8 col-xs-12">
-        <h4 class="h1 text-center" id="search">A che punto è il tuo comune?</h4>
+        <h4 class="h2 text-center">ANPR - Anagrafe nazionale della popolazione Residente - Stato della</h4>
+        <h4 class="h2 text-center" id="search">A che punto è il tuo comune?</h4>
         <div class="ui-widget mb-4">
           <input id="tags" class="form-control input-sm" placeholder="Inserisci il nome del tuo comune">
         </div>
@@ -185,6 +161,32 @@
     </div>
 
   </footer>
+
+  <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.js"></script>
+  <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+  <script src="https://unpkg.com/tabulator-tables@4.0.5/dist/js/tabulator.min.js"></script>
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tabulator/2.11.0/tabulator.min.js"></script>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
+  <script type="text/javascript">
+    WebFontConfig = {
+      google: {
+        families: ['Titillium+Web:300,400,600,700,400italic:latin']
+      }
+    };
+    (function () {
+      var wf = document.createElement('script');
+      wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+      wf.type = 'text/javascript';
+      wf.async = 'true';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(wf, s);
+    })();
+  </script>
+  
 
   <script src="helper.js"></script>
   <script src="index.js"></script>

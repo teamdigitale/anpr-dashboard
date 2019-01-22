@@ -55,13 +55,13 @@ jobs:
 
 workflows:
   version: 2
+  commit:
+    filters:
+      branches:
+        only:
+          - gulp_ci
   update-dashboard:
     triggers:
-      - commit:
-          filters:
-            branches:
-              only:
-                - gulp_ci
       - schedule:
           cron: "0 * * * *"
           filters:

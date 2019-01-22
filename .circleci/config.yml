@@ -71,7 +71,6 @@ workflows:
             branches:
               only:
                 - gulp_ci
-
   update-dashboard:
     triggers:
       - schedule:

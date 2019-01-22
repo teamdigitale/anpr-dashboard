@@ -64,6 +64,14 @@ jobs:
 
 workflows:
   version: 2
+  commit-workflow:
+    jobs:
+      - update:
+          filters:
+            branches:
+              only:
+                - gulp_ci
+
   update-dashboard:
     triggers:
       - schedule:

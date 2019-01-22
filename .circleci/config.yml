@@ -60,6 +60,8 @@ workflows:
       branches:
         only:
           - gulp_ci
+    jobs:
+      - update
   update-dashboard:
     triggers:
       - schedule:

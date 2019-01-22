@@ -5,7 +5,7 @@
 
 defaults: &defaults
   docker:
-      - image: circleci/python:3.6
+      - image: circleci/node:8
 
 version: 2
 jobs:
@@ -36,6 +36,12 @@ jobs:
               git commit -a -m "Automated deployment to GitHub Pages: ${CIRCLE_SHA1}" || echo "."
             fi
 
+            # Install gulp and build
+            npm install
+            gulp
+
+            # Commit optimized version in docs folder 
+            git commit -a -m "Automated deployment to GitHub Pages: ${CIRCLE_SHA1}" || echo "."
             git push origin master
 
 

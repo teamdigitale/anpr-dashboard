@@ -9,6 +9,10 @@ references:
     docker:
       - image: circleci/node:8.1.4-browsers
 
+  npm_permissions: &npm_permissions
+    run:
+      name: set-user-permissions
+      command: sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}
   npm_install: &npm_install
     run:
       name: install-npm-dependencies
@@ -52,6 +56,7 @@ jobs:
       # Deploy the site to GitHub Pages
       #- add_ssh_keys: *add_ssh_keys
       - checkout
+      - << : *npm_permissions
       - << : *npm_install
       - << : *update_dashboard_data
       - << : *gulp_build
@@ -59,6 +64,13 @@ jobs:
 
 workflows:
   version: 2
+  commit-workflow:
+    jobs:
+      - update:
+          filters:
+            branches:
+              only:
+                - gulp_ci
   update-dashboard:
     triggers:
       - schedule:

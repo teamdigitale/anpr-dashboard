@@ -70,7 +70,7 @@ workflows:
           filters:
             branches:
               only:
-                - gulp_ci
+                - gulp-ci
   update-dashboard:
     triggers:
       - schedule:

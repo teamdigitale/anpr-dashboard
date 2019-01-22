@@ -38,14 +38,14 @@ references:
           cp /tmp/previsioni.json ./ && \
           git commit previsioni.json  -m "Automated deployment to GitHub Pages: ${CIRCLE_SHA1}" || echo "."
         fi
-        git push origin master
+        git push origin $CIRCLE_BRANCH
   gulp_build: &gulp_build
     run:
       name: gulp-build
       command: |
         gulp
         git commit docs -m "Automated deployment to GitHub Pages: ${CIRCLE_SHA1}" || echo "."
-        git push origin master
+        git push origin $CIRCLE_BRANCH
 
 
 version: 2

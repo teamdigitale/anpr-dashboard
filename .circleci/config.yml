@@ -12,7 +12,10 @@ references:
   npm_install: &npm_install
     run:
       name: install-npm-dependencies
-      command: npm install --silent
+      command: |
+        npm install
+        npm install gulp-cli -g
+        npm install gulp -D
   update_dashboard_data: &update_dashboard_data
     run:
       name: Update dashboard data
@@ -36,7 +39,8 @@ references:
     run:
       name: gulp-build
       command: |
-        gulp && git commit docs -m "Automated deployment to GitHub Pages: ${CIRCLE_SHA1}" || echo "."
+        gulp
+        git commit docs -m "Automated deployment to GitHub Pages: ${CIRCLE_SHA1}" || echo "."
         git push origin master
 
 

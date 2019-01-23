@@ -30,12 +30,12 @@ references:
 
         if [ `curl -s -w "%{http_code}" --compress -o /tmp/dashboardData.json https://api.daf.teamdigitale.it/anpr/dashboardData.json` = "200" ]; then
           echo "dashboard data updated" && \
-          cp /tmp/dashboardData.json ./ && \
+          cp /tmp/dashboardData.json .
         fi
 
         if [ `curl -s -w "%{http_code}" --compress -o /tmp/previsioni.json https://api.daf.teamdigitale.it/anpr/previsioni` = "200" ]; then
           echo "prevision data updated" && \
-          cp /tmp/previsioni.json ./ && \
+          cp /tmp/previsioni.json .
         fi
 
         git commit -a  -m "Automated deployment to GitHub Pages: ${CIRCLE_SHA1}" || echo "."

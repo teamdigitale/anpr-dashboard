@@ -26,18 +26,18 @@ references:
       command: |
         git config --global user.email no-reply@teamdigitale.governo.it
         git config --global user.name "Deploy Bot"
+        git pull
 
         if [ `curl -s -w "%{http_code}" --compress -o /tmp/dashboardData.json https://api.daf.teamdigitale.it/anpr/dashboardData.json` = "200" ]; then
           echo "dashboard data updated" && \
           cp /tmp/dashboardData.json ./ && \
-          git commit dashboardData.json  -m "Automated deployment to GitHub Pages: ${CIRCLE_SHA1}" || echo "."
         fi
 
         if [ `curl -s -w "%{http_code}" --compress -o /tmp/previsioni.json https://api.daf.teamdigitale.it/anpr/previsioni` = "200" ]; then
           echo "prevision data updated" && \
           cp /tmp/previsioni.json ./ && \
-          git commit previsioni.json  -m "Automated deployment to GitHub Pages: ${CIRCLE_SHA1}" || echo "."
         fi
+        git commit -a  -m "Automated deployment to GitHub Pages: ${CIRCLE_SHA1}" || echo "."
         git push origin $CIRCLE_BRANCH
   gulp_build: &gulp_build
     run:

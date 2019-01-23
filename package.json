@@ -12,14 +12,13 @@
     "del": "^2.0.2",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "latest",
-    "gulp-rev": "latest",
-    "gulp-rev-rewrite": "latest",
-    "gulp-rev-delete-original": "latest",
-    
     "gulp-concat": "latest",
-    "gulp-less": "latest",
     "gulp-csso": "^2.0.0",
     "gulp-htmlmin": "^3.0.0",
+    "gulp-less": "latest",
+    "gulp-rev": "latest",
+    "gulp-rev-delete-original": "latest",
+    "gulp-rev-rewrite": "latest",
     "gulp-uglify": "^2.0.0",
     "run-sequence": "^1.2.2"
   },

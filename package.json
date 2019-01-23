@@ -19,7 +19,7 @@
     "gulp-rev": "latest",
     "gulp-rev-delete-original": "latest",
     "gulp-rev-rewrite": "latest",
-    "gulp-uglify": "^2.0.0",
+    "gulp-uglify": "latest",
     "run-sequence": "^1.2.2"
   },
   "engines": {

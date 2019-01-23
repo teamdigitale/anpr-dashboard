@@ -44,6 +44,7 @@ references:
     run:
       name: gulp-build
       command: |
+        gulp clean
         gulp
         git add docs
         git commit docs -m "Automated deployment to GitHub Pages: ${CIRCLE_SHA1}" || echo "."

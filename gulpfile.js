@@ -48,7 +48,7 @@ gulp.task('styles', function () {
   });
   // Gulp task to minify JavaScript files
 gulp.task('scripts', function() {
-    return gulp.src(['./*.js','./*json'])
+    return gulp.src(['./*.js','./*json',"!./gulpfile.js","!./package.json"])
       // Minify the file
       //.pipe(uglify())
       //.pipe(concat('app.min.js'))

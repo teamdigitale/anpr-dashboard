@@ -70,7 +70,7 @@ workflows:
   update-dashboard:
     triggers:
       - schedule:
-          cron: "* * * * *"
+          cron: "0 * * * *"
           filters:
             branches:
               only:

@@ -86,7 +86,7 @@ gulp.task('clean', () => del([pubFolder]));
 Create and append an hash for javascript and css files in order to prevent caching
 */
 gulp.task('revision', ['scripts', 'styles'], () => {
-  return gulp.src(pubPath+'/**/*.{css,js}')
+  return gulp.src(pubPath+'/**/*.{css,js,json}')
     .pipe(rev())
     .pipe(revDelete()) // Remove the unrevved files
     .pipe(gulp.dest(pubFolder))
@@ -97,7 +97,7 @@ gulp.task('revision', ['scripts', 'styles'], () => {
 gulp.task('revRewrite', ['revision'], function() {
   const manifest = gulp.src(pubPath+'/rev-manifest.json');
 
-  return gulp.src(pubPath+'/index.html')
+  return gulp.src([pubPath+'/index.html'])
     .pipe(revRewrite({ manifest }))
     .pipe(gulp.dest(pubFolder));
 });

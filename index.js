@@ -3,21 +3,6 @@
 //possibility to do progressive rendering from ajax url of table
 //there is no data on AIRE
 
-//test
-//var dataUrl = "https://api.daf.teamdigitale.test/anpr/dashboardData.json";
-//prod
-var dataUrl = "./dashboardData.json";
-//localhost
-//var dataUrl = "http://localhost:4000/anpr/dashboardData.json";
-
-
-//test
-//var predictionUrl = "https://api.daf.teamdigitale.test/anpr/dprevisioni";
-//prod
-var predictionUrl = "./previsioni.json";
-//localhost
-//var predictionUrl = "http://localhost:4000/anpr/previsioni";
-
 mapboxgl.accessToken = "pk.eyJ1IjoidGVhbWRpZ2l0YWxlIiwiYSI6ImNqN3JsamdudjNqZG8yd3Q1Z3pxeG51YWUifQ.5fDbuvoLcC1f6n9g9nTgXA";
 
 

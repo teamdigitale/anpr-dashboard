@@ -37,6 +37,7 @@ references:
           echo "prevision data updated" && \
           cp /tmp/previsioni.json ./ && \
         fi
+
         git commit -a  -m "Automated deployment to GitHub Pages: ${CIRCLE_SHA1}" || echo "."
         git push origin $CIRCLE_BRANCH
   gulp_build: &gulp_build

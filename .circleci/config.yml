@@ -3,9 +3,57 @@
 # Check https://circleci.com/docs/2.0/ for more details
 #
 
-defaults: &defaults
-  docker:
-      - image: circleci/python:3.6
+references:
+  working_directory: /tmp/gh-pages
+  defaults: &defaults
+    docker:
+      - image: circleci/node:8.1.4-browsers
+
+  # Set the permissions needed to install node modules
+  npm_permissions: &npm_permissions
+    run:
+      name: set-user-permissions
+      command: sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}
+  # Install gulp & deps
+  npm_install: &npm_install
+    run:
+      name: install-npm-dependencies
+      command: |
+        npm install
+        npm install gulp-cli -g
+        npm install gulp -D
+  # Update dashboard data files
+  update_dashboard_data: &update_dashboard_data
+    run:
+      name: Update dashboard data
+      command: |
+        git config --global user.email no-reply@teamdigitale.governo.it
+        git config --global user.name "Deploy Bot"
+        git pull
+
+        if [ `curl -s -w "%{http_code}" --compress -o /tmp/dashboardData.json https://api.daf.teamdigitale.it/anpr/dashboardData.json` = "200" ]; then
+          echo "dashboard data updated" && \
+          cp /tmp/dashboardData.json .
+        fi
+
+        if [ `curl -s -w "%{http_code}" --compress -o /tmp/previsioni.json https://api.daf.teamdigitale.it/anpr/previsioni` = "200" ]; then
+          echo "prevision data updated" && \
+          cp /tmp/previsioni.json .
+        fi
+
+        git commit -a  -m "Automated deployment to GitHub Pages: ${CIRCLE_SHA1}" || echo "."
+        git push origin $CIRCLE_BRANCH
+  # Optimize site files with gulp
+  gulp_build: &gulp_build
+    run:
+      name: gulp-build
+      command: |
+        gulp clean
+        gulp
+        git add docs
+        git commit docs -m "Automated deployment to GitHub Pages: ${CIRCLE_SHA1}" || echo "."
+        git push origin $CIRCLE_BRANCH
+
 
 version: 2
 jobs:
@@ -14,31 +62,13 @@ jobs:
     steps:
       # Deploy the site to GitHub Pages
       #- add_ssh_keys: *add_ssh_keys
-      - checkout:
-          path: /tmp/gh-pages
-      - deploy:
-          name: Update data
-          command: |
-            git config --global user.email no-reply@teamdigitale.governo.it
-            git config --global user.name "Deploy Bot"
+      - checkout
+      - << : *npm_permissions
+      - << : *npm_install
+      - << : *update_dashboard_data
+      - << : *gulp_build
 
-            cd /tmp/gh-pages
-
-            if [ `curl -s -w "%{http_code}" --compress -o /tmp/dashboardData.json https://api.daf.teamdigitale.it/anpr/dashboardData.json` = "200" ]; then
-              echo "dashboard data updated" && \
-              cp /tmp/dashboardData.json ./ && \
-              git commit -a -m "Automated deployment to GitHub Pages: ${CIRCLE_SHA1}" || echo "."
-            fi
-
-            if [ `curl -s -w "%{http_code}" --compress -o /tmp/previsioni.json https://api.daf.teamdigitale.it/anpr/previsioni` = "200" ]; then
-              echo "prevision data updated" && \
-              cp /tmp/previsioni.json ./ && \
-              git commit -a -m "Automated deployment to GitHub Pages: ${CIRCLE_SHA1}" || echo "."
-            fi
-
-            git push origin master
-
-
+# This workflow will update the site every hour
 workflows:
   version: 2
   update-dashboard:

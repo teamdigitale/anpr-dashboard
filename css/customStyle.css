@@ -319,3 +319,96 @@ span {
 :-ms-input-placeholder {  
    text-align: center; 
 }
+
+/* teamdigitale header styles */
+.nav-banner {
+    background-color: #06c;
+    font-size: 16px;
+    line-height: 19px;
+    font-weight: 600;
+    color: #fff;
+    position: relative;
+    z-index: 9991;
+  }
+  
+  .nav-banner a {
+    color: #fff !important;
+    text-decoration: none;
+  }
+  
+  .nav-banner #slimheader {
+    padding: 18px 0;
+    border-bottom: 1px solid #127ae2;
+  }
+  
+  .nav-banner .slimheader__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-banner .slimheader__list li {
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    line-height: 19px;
+    display: inline-block;
+    padding: 0 6px;
+  }
+  
+  .nav-banner .slimheader__list li a {
+    color: #fff;
+    font-size: 16px;
+    line-height: 19px;
+    font-weight: 600;
+    padding: 0 6px;
+    opacity: 0.7;
+  }
+  
+  .nav-banner .slimheader__list li.delimiter {
+    border-right: 1px solid #127ae2;
+  }
+  
+  .nav-banner .slimheader__list li.current a {
+    opacity: 1;
+    border-bottom: 1px solid #fff;
+    padding-bottom: 16px;
+  }
+  
+  .nav-banner .slimheader__institutional a {
+    font-weight: 700;
+  }
+  
+  .nav-banner.nav-banner--small #slimheader {
+    display: none;
+  }
+  
+  .nav-banner .slimheader__buttcanvas {
+    margin-right: 8px;
+    padding-right: 6px;
+    border-right: 1px solid #127ae2;
+  }
+  
+  .nav-banner .slimheader__buttcanvas img {
+    position: relative;
+    top: -2px;
+  }
+  
+  @media (max-width: 767px) {
+    .hidden-xs {
+      display: none !important;
+    }
+  }
+  
+  @media (min-width: 768px) and (max-width: 991px) {
+    .hidden-sm {
+      display: none !important;
+    }
+  }
+  
+  @media (min-width: 992px) and (max-width: 1199px) {
+    .hidden-md {
+      display: none !important;
+    }
+  }
+  

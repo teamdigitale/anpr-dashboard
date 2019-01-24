@@ -91,7 +91,7 @@ fetch(dataUrl)
 				 //,
 				// fill: true
 			} , 
-				{
+			{
 					data: subs.map((sub) => sub.popolazione_aire),
 					label: "Popolazione Aire",
 					borderColor: "#3BB273",
@@ -99,7 +99,7 @@ fetch(dataUrl)
 					yAxisID: "pop",
 					 //,
 					fill: true
-					} 
+				} 
 		  ]
 		},
 		options: {

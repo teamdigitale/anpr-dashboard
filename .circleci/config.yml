@@ -58,7 +58,8 @@ references:
       name: create-cname
       command: |
         echo "stato-migrazione.anpr.it" > docs/CNAME
-        git commit docs -m "Automated deployment to GitHub Pages: ${CIRCLE_SHA1}" || echo "."
+        git add docs/CNAME
+        git commit docs/CNAME -m "Automated deployment to GitHub Pages: ${CIRCLE_SHA1}" || echo "."
         git push origin $CIRCLE_BRANCH
 
 version: 2

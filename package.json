@@ -16,15 +16,10 @@
     "gulp-csso": "^2.0.0",
     "gulp-htmlmin": "^3.0.0",
     "gulp-less": "latest",
-<<<<<<< HEAD
-    "gulp-sass": "^2.0.0",
-    "gulp-uglify": "^2.0.0",
-=======
     "gulp-rev": "latest",
     "gulp-rev-delete-original": "latest",
     "gulp-rev-rewrite": "latest",
     "gulp-uglify": "latest",
->>>>>>> master
     "run-sequence": "^1.2.2"
   },
   "engines": {

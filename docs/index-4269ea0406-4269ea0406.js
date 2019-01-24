@@ -90,16 +90,16 @@ fetch(dataUrl)
 				yAxisID: "com"
 				 //,
 				// fill: true
-				}, 
+			} , 
 				{
 					data: subs.map((sub) => sub.popolazione_aire),
 					label: "Popolazione Aire",
 					borderColor: "#3BB273",
-					//backgroundColor: "#8e5ea2",
-					yAxisID: "pop_aire",
+					backgroundColor: "#3BB273",
+					yAxisID: "pop",
 					 //,
 					fill: true
-					}
+					} 
 		  ]
 		},
 		options: {
@@ -120,17 +120,17 @@ fetch(dataUrl)
 				id: 'com',
 				type: 'linear',
 				position: 'left',
-				}
-				, 
+				}, 
 				{
 				id: 'pop',
 				type: 'linear',
 				position: 'right'
-				},{
+				}
+				/*,{
 					id: 'pop_aire',
 					type: 'linear',
 					position: 'right'
-					} 
+					} */
 			]
 		}
 		}

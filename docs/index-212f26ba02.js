@@ -90,7 +90,16 @@ fetch(dataUrl)
 				yAxisID: "com"
 				 //,
 				// fill: true
-			  }
+			} , 
+			{
+					data: subs.map((sub) => sub.popolazione_aire),
+					label: "Popolazione Aire",
+					borderColor: "#3BB273",
+					backgroundColor: "#3BB273",
+					yAxisID: "pop",
+					 //,
+					fill: true
+				} 
 		  ]
 		},
 		options: {
@@ -106,15 +115,23 @@ fetch(dataUrl)
 					unit: 'month'
 				}
 			}],
-			yAxes: [{
+			yAxes: [
+				{
 				id: 'com',
 				type: 'linear',
 				position: 'left',
-			  }, {
+				}, 
+				{
 				id: 'pop',
 				type: 'linear',
 				position: 'right'
-			  }]
+				}
+				/*,{
+					id: 'pop_aire',
+					type: 'linear',
+					position: 'right'
+					} */
+			]
 		}
 		}
 	  });
@@ -149,7 +166,7 @@ fetch(dataUrl)
 			display: true,
 			text: 'Popolazione e Comuni pre-subentrati',
 
-		  },
+			} ,
 		  scales: {
 			xAxes: [{
 				type: 'time',
@@ -166,7 +183,7 @@ fetch(dataUrl)
 				type: 'linear',
 				position: 'right'
 			  }]
-		}
+			} 
 		}
 	  });
 

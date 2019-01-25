@@ -53,7 +53,14 @@ references:
         git add docs
         git commit docs -m "Automated deployment to GitHub Pages: ${CIRCLE_SHA1}" || echo "."
         git push origin $CIRCLE_BRANCH
-
+  create_cname: &create_cname
+    run:
+      name: create-cname
+      command: |
+        echo "stato-migrazione.anpr.it" > docs/CNAME
+        git add docs/CNAME
+        git commit docs/CNAME -m "Automated deployment to GitHub Pages: ${CIRCLE_SHA1}" || echo "."
+        git push origin $CIRCLE_BRANCH
 
 version: 2
 jobs:
@@ -67,6 +74,7 @@ jobs:
       - << : *npm_install
       - << : *update_dashboard_data
       - << : *gulp_build
+      - << : *create_cname
 
 # This workflow will update the site every hour
 workflows:

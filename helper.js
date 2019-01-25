@@ -2,7 +2,7 @@ var anprLayers = [{
     "id": "subentro",
     "property": "data_subentro",
     "filter": (d) => {
-        return d.data_subentro !== undefined;
+        return (d.data_subentro !== undefined && d.data_subentro !== "");
     },
     "mapboxFilter": ["has", "data_subentro"], 
     "sorter": (a, b) => {

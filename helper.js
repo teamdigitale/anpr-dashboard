@@ -1,11 +1,11 @@
 var anprLayers = [{
     "id": "subentro",
     "property": "data_subentro",
-    "filter": (d) => {
-        return d.data_subentro !== undefined;
+    "filter": function(d) {
+        return (d.data_subentro !== undefined && d.data_subentro !== "");
     },
     "mapboxFilter": ["has", "data_subentro"], 
-    "sorter": (a, b) => {
+    "sorter": function(a, b){
 	var diff = moment(a.data_subentro, "DD/MM/YYYY").diff(moment(b.data_subentro, "DD/MM/YYYY"), 'days');
         if (diff < 0) return 1;
         if (diff > 0) return -1;
@@ -68,11 +68,11 @@ var anprLayers = [{
 },{
     "id": "presubentro",
     "property": "data_presubentro",
-    "filter": (d) => {
+    "filter": function(d){
         return d.data_presubentro !== undefined;
     },
     "mapboxFilter": ["all", ["has", "data_presubentro"], ["!", ["has", "data_subentro"]]],
-    "sorter": (a,b) => {
+    "sorter": function(a,b){
 	var diff = moment(a.data_presubentro, "DD/MM/YYYY").diff(moment(b.data_presubentro, "DD/MM/YYYY"), 'days');
         if (diff < 0) return 1;
         if (diff > 0) return -1;
@@ -131,7 +131,7 @@ var anprLayers = [{
     }
 }];
 
-var createSummaryBoxes = (summaries) => {
+var createSummaryBoxes = function(summaries) {
     var info = d3.select("body")
         .append("div")
         .attr("class", "info-tooltip")
@@ -159,7 +159,7 @@ var createSummaryBoxes = (summaries) => {
     }
 ];
 
-    summaryBoxes.forEach((s) => {
+    summaryBoxes.forEach(function(s) {
         d3.select("#" + s.id)
             .append("div")
             .style("font-size", "35px")
@@ -176,16 +176,16 @@ var createSummaryBoxes = (summaries) => {
 	    .attr("class", "fas fa-info-circle fa-1x")
             .style("visibility", "hidden");
         d3.select("#" + s.id)
-            .on("mouseover", () => {
+            .on("mouseover", function() {
                 d3.select("#" + s.id + "_i")
                     .style("visibility", "visible");
             })
-            .on("mouseout", () => {
+            .on("mouseout", function() {
                 d3.select("#" + s.id + "_i")
                     .style("visibility", "hidden");
             });
         d3.select("#" + s.id + "_i")
-            .on("mouseover", () => {
+            .on("mouseover", function() {
                 info.transition()
                     .duration(100)
                     .style("opacity", 1);
@@ -193,7 +193,7 @@ var createSummaryBoxes = (summaries) => {
                     .style("left", (d3.event.pageX) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
             })
-            .on("mouseout", () => {
+            .on("mouseout", function() {
                 info.transition()
                     .duration(500)
 		    .style("opacity", 0);
@@ -202,15 +202,15 @@ var createSummaryBoxes = (summaries) => {
 };
 
 // example input data: [{ "label":"ABANO TERME", "PROVINCIA":"PD", "REGIONE":"Veneto", "ZONA":"Nord-Est", "popolazione":19349}}, {"label": "ABBADIA CERRETO", "PROVINCIA":"LO", "REGIONE":"Lombardia", "ZONA":"Nord-Ovest", "popolazione":297 ,"data_subentro":"2018-10-26T00:00:00.000Z" ,"data_presubentro":"2018-05-22T00:00:00.000Z"}}]         
-var createSearchBar = (data) => {
-    $.ui.autocomplete.filter = (array, term) => {
+var createSearchBar = function(data) {
+    $.ui.autocomplete.filter = function(array, term) {
         var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(term), "i");
         return $.grep(array, function (value) {
             return matcher.test(value.label);
         });
     };
 
-    $(() => {
+    $(function() {
         $("#tags").autocomplete({
             source: data,
             autoFocus: true,
@@ -227,8 +227,8 @@ var createSearchBar = (data) => {
 };
 
 
-var loadMap = (map, source, layer) => {
-    map.on("load", () => {
+var loadMap = function(map, source, layer) {
+    map.on("load", function() {
 	var id = layer.id;
 	var color = layer.color;
 	var property = layer.property;
@@ -239,7 +239,7 @@ var loadMap = (map, source, layer) => {
 
     if(id === 'subentro') {
         var newSource = {}
-        newSource['features'] = source.features.filter(x => x.properties.hasOwnProperty('data_subentro'))
+        newSource['features'] = source.features.filter(function(x) {return x.properties.hasOwnProperty('data_subentro')})
         newSource['type'] = "FeatureCollection"
         map.addSource(id, {
             "type": "geojson",
@@ -284,7 +284,7 @@ var loadMap = (map, source, layer) => {
 
     } else {
         var preSource = {}
-        preSource['features'] = source.features.filter(x => x.properties.hasOwnProperty('data_presubentro'))
+        preSource['features'] = source.features.filter(function(x){return x.properties.hasOwnProperty('data_presubentro')})
         preSource['type'] = "FeatureCollection"
         map.addSource(id, {
             "type": "geojson",
@@ -436,7 +436,7 @@ var loadMap = (map, source, layer) => {
             closeOnClick: false
 	});
 	
-	map.on("mouseenter", "unclustered", (e) => {
+	map.on("mouseenter", "unclustered", function(e) {
             // Change the cursor style as a UI indicator.                             
             map.getCanvas().style.cursor = "pointer";
 	    
@@ -456,7 +456,7 @@ var loadMap = (map, source, layer) => {
 		    .addTo(map);
 	});
 	
-	map.on("mouseleave", "unclustered", () => {
+	map.on("mouseleave", "unclustered", function() {
             map.getCanvas().style.cursor = "";
             popup.remove();
 	});
@@ -503,7 +503,7 @@ var anprFornitori = {
     }
 }
 
-var printMsg = (d) => {
+var printMsg = function(d) {
     var i = 2, //default value: d.data_subentro === undefined && d.data_presubentro === undefined 
         date = "",
         options = [{
@@ -530,7 +530,7 @@ var printMsg = (d) => {
     return "<p style='float: left;'><img src=" + options[i].icon + "></p>Il <b>comune di " + d.label + "</b><br> è " + options[i].text + date;
 }
 
-var printPopup = (d) => {
+var printPopup = function(d) {
     var i = 2, //default value: d.data_subentro === undefined && d.data_presubentro === undefined 
         date = "",
         options = [{
@@ -561,7 +561,7 @@ var printPopup = (d) => {
     )
 }
 
-var printPopupMap = (d) => {
+var printPopupMap = function(d) {
     var i = 2, //default value: d.data_subentro === undefined && d.data_presubentro === undefined 
         date = "",
         options = [{
@@ -593,7 +593,7 @@ var printPopupMap = (d) => {
     )
 }
 
-var printTooltip = (data1, data2) => "<span style='color: lightgrey;font-size: 13px;'>" +
+var printTooltip = function(data1, data2){"<span style='color: lightgrey;font-size: 13px;'>" +
     data1.label +
     ":</span> <b>" +
     data1.value +
@@ -603,6 +603,7 @@ var printTooltip = (data1, data2) => "<span style='color: lightgrey;font-size: 1
     ":</span> <b>" +
     data2.value +
     "</b>";
+}
 
 var locale = d3.timeFormatLocale({
     "dateTime": "%A %e %B %Y, %X",
@@ -614,312 +615,3 @@ var locale = d3.timeFormatLocale({
     "months": ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"],
     "shortMonths": ["Gen", "Feb", "Mar", "Apr", "Mag", "Giu", "Lug", "Ago", "Set", "Ott", "Nov", "Dic"]
 });
-    
-var createChart = (data, X, Y0, Y1, id) => {
-    var point = d3.select("body")
-        .append("div")
-        .attr("class", "point-tooltip")
-        .style("opacity", 0);
-
-    var margin = {
-        top: 35,
-        right:  (window.innerWidth > 767) ? 40 : 80,
-        bottom: 70,
-        left: 60
-    },
-        width = (window.innerWidth > 767) ? window.innerWidth / 2 : window.innerWidth, //parseInt(d3.select(element).style('width'), 10),
-        width = width - margin.left - margin.right - 70,
-        height = 320 - margin.top - margin.bottom;
-
-    var x = d3.scaleTime()
-	.range([0, width])
-	.domain([X.min, d3.extent(data, (d) => new Date(d[X.property]))[1]]);
-    var y0 = d3.scaleLinear()
-	.range([height, 0])
-	.domain([0, d3.max(data, (d) => Math.max(d[Y0.property]))]);
-    var y1 = d3.scaleLinear()
-	.range([height, 0])
-	.domain([0, d3.max(data, (d) => Math.max(d[Y1.property]))]);
-    
-    var valueline = d3.line()
-        .x((d) => x(new Date(d[X.property])))
-        .y((d) => y0(d[Y0.property]));
-    
-    // define the 2nd line                 
-    var valueline2 = d3.line()
-        .x((d) => x(new Date(d[X.property])))
-        .y((d) => y1(d[Y1.property]));
-
-    // define the area   
-    var area = d3.area()
-        .x((d) => x(new Date(d[X.property])))
-	.y0(height)
-	.y1((d) => y0(d[Y0.property]));
-
-    var area2 = d3.area()
-        .x((d) => x(new Date(d[X.property]))) 
-	.y0(height)
-	.y1((d) => y1(d[Y1.property]));
-    
-    var svg = d3.select("#chart-"+ id)
-        .append("svg");
-
-    var svgChart = svg.attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
-//	.attr("viewBox", "0,0," + width + "," + height)
-        .append("g")
-	.attr("viewBox", "0,0," + width + "," + height)
-        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-	
-    // Add the valueline path.                  
-    svgChart.append("path")
-        .data([data])
-        .attr("class", "line")
-	.attr("id", "lineblack-" + id)
-        .style("stroke", "black")
-        .attr("d", valueline);
-    
-    svgChart.append("path")
-        .data([data])
-        .attr("class", "area")
-        .attr("id", "areablack-" + id)
-        .style("stroke", "black")
-        .attr("d", area);
-    
-    // Add the valueline2 path.
-    svgChart.append("path")
-        .data([data])
-        .attr("class", "line")
-	.attr("id", "linecolor-" + id)
-        .style("stroke", Y1.color)
-        .attr("d", valueline2);
-
-    svgChart.append("path")
-        .data([data])
-        .attr("class", "area")
-        .attr("id", "areacolor-" + id)
-	.style("fill", Y1.color)
-	.style("opacity", 0.3)
-        .attr("d", area2);
-    
-    // Add the X Axis
-    svgChart.append("g")
-        .attr("class", "axis" )
-	.attr("id", "axis-" + id)
-        .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisBottom(x)
-              .tickFormat(locale.format("%b %Y")))
-        .selectAll("text")
-	.attr("id", "xticks")
-        .attr("dx", "-.8em")
-        .attr("dy", ".15em")
-	.style("font-size", "10px")
-        .attr("transform", () => {return "rotate(" + ((window.innerWidth > 575) ? -60 : -30) + ")";});
-    
-    // Add the Y0 Axis  
-    svgChart.append("g")
-        .attr("class", "axisblack")
-        .call(d3.axisLeft(y0));
-
-    svgChart.append("g")
-        .attr("class", "grid")
-	.attr("id", "grid-" + id)
-        .call(d3.axisLeft(y0).tickSize(-width).tickFormat(""));
-
-    // Add the Y1 Axis
-    svgChart.append("g")
-        .attr("class", "axis" + Y1.color)
-        .attr("transform", "translate( " + width + ", 0 )")
-        .call(d3.axisRight(y1));
-
-    // Add tooltip and circle on hover
-    var pointTooltip = svgChart.selectAll("dot")
-        .data(data)
-        .enter();
-
-    pointTooltip
-        .append("circle")
-	.attr("class", "circlecolor-" + id)
-        .attr("id", (d, i) => "circlecolor-" + id + "-" + i)
-        .attr("r", 5)
-        .attr("cx", (d) => x(new Date(d[X.property])))
-        .attr("cy", (d) => y1(d[Y1.property]))
-	.style("stroke", Y1.color)
-        .style("fill", Y1.color)
-	.style("fill-opacity", 0.3)
-        .style("opacity", 0)
-        .on("mouseover", (d, i) => {
-            point.transition()
-                .duration(200)
-                .style("opacity", 1);
-            point.html(printTooltip({
-		label: "Data",
-		value: moment(d.date).format("DD/MM/YYYY")
-	    },{
-		label: "Numero di comuni",
-		value: d.comuni
-	    }))
-                .style("left", (d3.event.pageX) + "px")
-                .style("top", (d3.event.pageY - 78) + "px");
-            d3.select("#circlecolor-" + id + "-" + i)
-		.transition()
-                .duration(200)
-		.style("opacity", 1);
-        })
-        .on("mouseout", (d, i) => {
-            point.transition()
-                .duration(500)
-                .style("opacity", 0);
-	    d3.select("#circlecolor-" + id + "-" + i)
-                .transition()
-                .duration(500)
-		.style("opacity", 0);
-        });
-
-    pointTooltip
-        .append("circle")
-	.attr("class", "circleblack-" + id)
-        .attr("id", (d, i) => "circleblack-" + id + "-" + i)
-        .attr("r", 5)
-        .attr("cx", (d) => x(new Date(d[X.property])))
-        .attr("cy", (d) => y0(d[Y0.property]))
-        .style("stroke", "black")
-        .style("fill", "black")
-	.style("fill-opacity", 0.3)
-        .style("opacity", 0)     
-        .on("mouseover", (d, i) => {
-            point.transition()
-                .duration(200)
-                .style("opacity", 1);
-            point.html(printTooltip({
-		label: "Data",
-		value: moment(d.date).format("DD/MM/YYYY")
-	    },{
-		label: "Popolazione",
-		value: d.popolazione
-	    }))
-                .style("left", (d3.event.pageX) + "px")
-                .style("top", (d3.event.pageY - 78) + "px");
-	    d3.select("#circleblack-" + id + "-" + i)
-                .transition()
-                .duration(200)
-                .style("opacity", 1);
-        })
-        .on("mouseout", (d, i) => {
-            point.transition()
-                .duration(500)
-                .style("opacity", 0);
-	    d3.select("#circleblack-" + id + "-" + i)
-                .transition()
-                .duration(500)
-                .style("opacity", 0);
-        });
-    
-    // Add chart legend
-    var legend = svg.selectAll(".legend")
-        .data([Y0, Y1])
-        .enter().append("g")
-        .attr("id", "legend-" + id)
-        .attr("transform", (d, i) => {
-	    var deltax, deltay;
-	    if (i === 1) {
-		if (width < 350) {
-		    deltax = 85;
-		    deltay = -13;
-		} else {
-		    deltax = width * 0.9;
-		    deltay = 0;
-		}
-	    } else {
-		deltax = 120;
-		deltay = 0;
-	    }
-	    return "translate( " + (deltax + margin.left) + ", " + deltay + ")";
-        });
-    
-    legend.append("line")
-        .attr("class", "legendLine")
-        .attr("x1", 20)
-        .attr("x2", 45)
-        .attr("y1", 20)
-        .attr("y2", 20)
-        .style("stroke", (d) => d.color)
-        .style("fill", "none");
-    
-    legend.append("text")
-        .attr("x", 15)
-        .attr("y", 20)
-        .attr("dy", ".35em")
-        .style("text-anchor", "end")
-        .style("font-size", "15px")
-        .text((d) => d.label);
-
-    d3.select(".domain").remove();
-    
-    $(window).resize(() => {
-	if (window.innerWidth < 350) {
-	    d3.select("#tags").attr("placeholder", "Cerca");
-	} else {
-	    d3.select("#tags").attr("placeholder", "Inserisci il nome del tuo comune");
-	}
-	// update width
-	width = (window.innerWidth > 575) ? window.innerWidth / 2 : window.innerWidth, 
-	width = width - margin.left - margin.right - 70;
-	    
-	d3.select(".axis" + Y1.color)
-            .attr("transform", "translate( " + width + ", 0 )");
-	
-	x = d3.scaleTime()
-	    .range([0, width])
-            .domain([X.min, d3.extent(data, (d) => new Date(d[X.property]))[1]]);
-
-	d3.selectAll("#xticks")
-	    .attr("transform", () => {
-		return "rotate(" + ((window.innerWidth > 575) ? -60 : -30) + ")";
-	    });
-
-	d3.select("#axis-" + id)
-	    .call(d3.axisBottom(x)
-		  .tickFormat(locale.format("%b %Y")));
-
-	d3.select("#grid-" + id)
-            .call(d3.axisLeft(y0).tickSize(-width).tickFormat(""));
-	
-	d3.select("#linecolor-" + id)
-	    .attr("d", valueline2);
-	d3.select("#lineblack-" + id)
-	    .attr("d", valueline);
-	d3.select("#areacolor-" + id)
-            .attr("d", area2);
-        d3.select("#areablack-" + id)
-            .attr("d", area);
-
-	d3.selectAll(".circlecolor-" + id)
-	    .attr("cx", (d) => x(new Date(d[X.property])))
-            .attr("cy", (d) => y1(d[Y1.property]));
-
-	d3.selectAll(".circleblack-" + id)
-            .attr("cx", (d) => x(new Date(d[X.property])))
-            .attr("cy", (d) => y0(d[Y0.property]));
-
-	d3.selectAll("#legend-" + id)
-	    .attr("transform", (d, i) => {
-		var deltax, deltay;
-		if (i === 1) {
-                    if (width < 350) {
-			deltax = 85;
-			deltay = -13;
-                    } else {
-			deltax = width * 0.9;
-			deltay = 0;
-                    }
-		} else {
-                    deltax = 120;
-                    deltay = 0;
-		}
-		return "translate( " + (deltax + margin.left) + ", " + deltay + ")";
-            });
-	
-	svg.attr("width", width + margin.left + margin.right);
-    });
-};

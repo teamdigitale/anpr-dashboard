@@ -5,17 +5,17 @@
 
 mapboxgl.accessToken = "pk.eyJ1IjoidGVhbWRpZ2l0YWxlIiwiYSI6ImNqN3JsamdudjNqZG8yd3Q1Z3pxeG51YWUifQ.5fDbuvoLcC1f6n9g9nTgXA";
 
-
 fetch(dataUrl)
-    .then((response) => response.json())
-    .then((json) => {
+    .then(function(response) {
+			return response.json()})
+    .then(function(json) {
 	console.log("data elaborated and downloaded")
 
 	//load summaries
 	createSummaryBoxes(json.summaries);
 
 	//load searchbar
-	var properties = json.geojson.features.map((d) => d.properties);
+	var properties = json.geojson.features.map(function(d){ return d.properties});
 	createSearchBar(properties);
 
 	//initialize maps
@@ -73,17 +73,18 @@ fetch(dataUrl)
 	new Chart(document.getElementById("comSub"), {
 		type: 'line',
 		data: {
-		  labels: subs.map((sub) => sub.date),
+		  labels: subs.map(function(sub) { return sub.date}),
 		  datasets: [{
-			  data: subs.map((sub) => sub.popolazione),
-			  label: "Popolazione",
+			  data: subs.map(function(sub){ return sub.popolazione}),
+				//label: "Popolazione",
+				label : "Popolazione",
 			  borderColor: "#3e95cd",
 			  //backgroundColor: "#3e95cd",
 			  yAxisID: "pop" //,
 			  // fill: true
 			},
 			{
-				data: subs.map((sub) => sub.comuni),
+				data: subs.map(function(sub) { return sub.comuni}),
 				label: "Comuni",
 				borderColor: "#8e5ea2",
 				//backgroundColor: "#8e5ea2",
@@ -92,7 +93,7 @@ fetch(dataUrl)
 				// fill: true
 			} , 
 			{
-					data: subs.map((sub) => sub.popolazione_aire),
+					data: subs.map(function(sub) {return sub.popolazione_aire}),
 					label: "Popolazione Aire",
 					borderColor: "#3BB273",
 					backgroundColor: "#3BB273",
@@ -141,9 +142,9 @@ fetch(dataUrl)
 	  new Chart(document.getElementById("comPreSub"), {
 		type: 'line',
 		data: {
-		  labels: presub.map((sub) => sub.date),
+		  labels: presub.map(function(sub) { return sub.date}),
 		  datasets: [{
-			  data: presub.map((sub) => sub.popolazione),
+			  data: presub.map(function(sub){return sub.popolazione}),
 			  label: "Popolazione",
 			  borderColor: "#FFF966",
 			  //backgroundColor: "#3e95cd",
@@ -151,7 +152,7 @@ fetch(dataUrl)
 			  // fill: true
 			},
 			{
-				data: presub.map((sub) => sub.comuni),
+				data: presub.map(function(sub){return sub.comuni}),
 				label: "Comuni",
 				borderColor: "#8e5ea2",
 				//backgroundColor: "#8e5ea2",
@@ -190,15 +191,15 @@ fetch(dataUrl)
     });
 
 fetch(predictionUrl)
-      .then((response) => response.json())
-	  .then((json) => {
-		  const dates = json.dates.map((date) => moment(date))
+    .then(function(response) {return response.json()})
+	  .then( function(json) {
+		  const dates = json.dates.map(function(date) { return moment(date)})
 		  let cumsum = []
-		  json.populations.reduce((a,b,i) => {
+		  json.populations.reduce(function(a,b,i) {
 			  return cumsum[i] = a+b;
 			}, 0)
 		  const populations = cumsum.slice(0, json.populations.length - 11)
-		  const predictions = cumsum.map((pop, index) => {
+		  const predictions = cumsum.map(function(pop, index) {
 			  if (index < cumsum.length - 12){
 				  return null
 			  }
@@ -221,16 +222,15 @@ fetch(predictionUrl)
 	.attr("class", "fas fa-info-circle fa-1x")
 		.style("visibility", "hidden");
 	d3.select("#" + "predictions")
-		.on("mouseover", () => {
-			d3.select("#" + "predictions" + "_i")
-				.style("visibility", "visible");
+		.on("mouseover", function()  {
+			return d3.select("#" + "predictions" + "_i").style("visibility", "visible");
 		})
-		.on("mouseout", () => {
-			d3.select("#" + "predictions" + "_i")
+		.on("mouseout", function() {
+			return d3.select("#" + "predictions" + "_i")
 				.style("visibility", "hidden");
 		});
 	d3.select("#" + "predictions" + "_i")
-		.on("mouseover", () => {
+		.on("mouseover", function() {
 			info.transition()
 				.duration(100)
 				.style("opacity", 1);
@@ -238,7 +238,7 @@ fetch(predictionUrl)
 				.style("left", (d3.event.pageX) + "px")
 				.style("top", (d3.event.pageY - 28) + "px");
 		})
-		.on("mouseout", () => {
+		.on("mouseout", function() {
 			info.transition()
 				.duration(500)
 		.style("opacity", 0);

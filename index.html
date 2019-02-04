@@ -59,10 +59,10 @@
     <!--Content shown when popup is not displayed-->
     <div class="row justify-content-center pt-3">
       <div class="col-sm-8 col-xs-12">
-        <h4 class="h2 text-center">ANPR - Stato della migrazione</h4>
-        <h4 class="h2 text-center" id="search">A che punto è il tuo comune?</h4>
+        <h4 class="h2 text-center" id="migrationState"></h4>
+        <h4 class="h2 text-center" id="search"></h4>
         <div class="ui-widget mb-4">
-          <input id="tags" class="form-control input-sm" placeholder="Inserisci il nome del tuo comune">
+          <input id="tags" class="form-control input-sm" ta placeholder="">
         </div>
       </div>
     </div>
@@ -91,7 +91,7 @@
       <div class="col-md-6 col-xs-12">
 
         <div class="row justify-content-center mb-3">
-          <h4 class="h2">Comuni subentrati</h4>
+          <h4 class="h2" id="comuniSubentrati"></h4>
         </div>
 
         <!-- 'Subentrati' chart -->
@@ -122,7 +122,7 @@
 
       <div class="col-md-6 col-xs-12">
         <div class="row justify-content-center mb-3">
-          <h4 class="h2">Comuni in presubentro</h4>
+          <h4 class="h2" id="municipalitiesPreMigrated"></h4>
         </div>
 
         <!-- 'Presubentrati' chart -->
@@ -153,8 +153,7 @@
 
     <hr class="mt-0 w-75">
     <div class="row justify-content-center" id="table-header">
-      <h4 class="h2">Fornitori - Percentuale Comuni Subentrati, In Presubentro,
-        Inattivi</h4>
+      <h4 class="h2" id="fornitori"></h4>
     </div>
     <div class="row mx-2 mb-4">
       <div class="col p-1">
@@ -166,7 +165,7 @@
 
     <hr class="mt-0 w-75">
     <div class="row justify-content-center">
-      <h4 class="h2">Previsioni prossimi 12 mesi</h4>
+      <h4 class="h2" id="previsioni"></h4>
     </div>
     <div class="row mx-2 mb-4">
       <div class="col-md-4 col-xs-12 p-1">
@@ -213,6 +212,7 @@
   var dataUrl = "./dashboardData.json";
   var predictionUrl = "./previsioni.json";
 
+  //var d3 = require("d3")
     WebFontConfig = {
       google: {
         families: ['Titillium+Web:300,400,600,700,400italic:latin']
@@ -228,6 +228,7 @@
     })();
   </script>
 
+  <script src="localization.js"></script>
   <script src="helper.js"></script>
   <script src="index.js"></script>
 
@@ -249,7 +250,14 @@
     fitToContainer(canvas);
     fitToContainer(subCanvas);
     fitToContainer(preSubCanvas);
-
+  //localization 
+  $("#previsioni").html(Resources.Get("forecast12MonthsInfo"));
+  $("#fornitori").html(Resources.Get("supplierInfo"));
+  $("#seach").html(Resources.Get("searchInfo"));
+  $("#comuniSubentrati").html(Resources.Get("municipalitiesMigrated"));
+  $("#municipalitiesPreMigrated").html(Resources.Get("municipalitiesPreMigrated"));
+  $("#migrationState").html(Resources.Get("migrationState"));
+  $("#tags").attr("placeholder", Resources.Get("insertYourTown"));
 
     
   </script>

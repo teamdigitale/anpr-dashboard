@@ -14,11 +14,11 @@ var anprLayers = [{
     "Y": [{
 	property: "popolazione",
 	color: "black",
-	label: "popolazione subentrata"
+	label: Resources.Get("populationMigrated")
     },{
 	property: "comuni",
 	color: "green",
-	label: "comuni subentrati"
+	label: Resources.Get("municipalitiesMigrated")
     }],
     "color": "green",
     "options": {
@@ -27,33 +27,33 @@ var anprLayers = [{
 	//progressiveRender:"remote", //enable progressive rendering
 	//ajaxURL:"/data/page", //set the ajax URL
 	"columns": [{
-            "title": "Nome Comune",
+            "title": Resources.Get("municipalityName"),
             "field": "label",
             "width": 180,
             "frozen": true
 	},{
-            "title": "Provincia",
+            "title": Resources.Get("municipalityProvince"),
             "field": "PROVINCIA",
             "sorter": "string",
             "width": 100
 	},{
-            "title": "Regione",
+            "title": Resources.Get("municipalityRegion"),
             "field": "REGIONE",
             "sorter": "string",
             "width": 90
 	},{
-            "title":"Zona",
+            "title":Resources.Get("municipalityZone"),
             "field":"ZONA",
             "sorter": "string",
             "width":80
 	},{
-            "title": "Abitanti",
+            "title": Resources.Get("municipalityPopulation"),
             "field": "popolazione",
             "align": "center",
             "sorter": "number",
             "width": 80
 	},{
-            "title": "Data subentro",
+            "title": Resources.Get("municipalityMigrationDate"),
             "field": "data_subentro",
             "align": "center",
             "width": 100,
@@ -81,43 +81,43 @@ var anprLayers = [{
     "Y": [{
         property: "popolazione",
 	color: "black",
-        label: "popolazione presubentrata"
+        label: Resources.Get("populationMigrated")
     },{
         property: "comuni",
         color: "orange",
-        label: "comuni presubentrati"
+        label: Resources.Get("municipalitiesMigrated")
     }],
     "color": "orange",
     "options": {
 	"pagination": true,
 	"progressiveRender": true,
 	"columns": [{
-            "title": "Nome Comune",
+            "title": Resources.Get("municipalityName"),
             "field": "label",
             "width": 180,
             "frozen": true
-	},{ "title": "Provincia",
+	},{ "title": Resources.Get("municipalityProvince"),
             "field": "PROVINCIA",
             "sorter": "string",
             "width": 100
 	  },{
-              "title": "Regione",
+              "title": Resources.Get("municipalityRegion"),
               "field": "REGIONE",
               "sorter": "string",
               "width": 90
 	  },{
-              "title":"Zona",
+              "title":Resources.Get("municipalityZone"),
               "field":"ZONA",
               "sorter":"string",
               "width": 80
 	  },{
-              "title": "Abitanti",
+              "title": Resources.Get("municipalityPopulation"),
               "field": "popolazione",
               "align": "center",
               "sorter": "number",
               "width": 80
 	  },{
-              "title": "Data presubentro",
+              "title": Resources.Get("municipalityPreMigrationDate"),
               "field": "data_presubentro",
               "align": "center",
               "width": 100,
@@ -139,23 +139,23 @@ var createSummaryBoxes = function(summaries) {
     var summaryBoxes = [{
         id: "pop_pre",
         value: summaries.pop_pre,
-        label: "Popolazione in presubentro",
-        description: "Totale popolazione dei comuni che hanno già inviato la loro anagrafe (ANPR locale) ad ANPR per la validazione e stanno compiendo test di integrazione, bonificando i dati anagrafici o che non hanno ancora pianificato una data definitiva per il passaggio in produzione."
+        label: Resources.Get("populationPreMigrated"),
+        description: Resources.Get("populationPreMigratedInfo")
     },{
         id: "pop_sub",
         value: summaries.pop_sub,
-        label: "Popolazione subentrata",
-            description: "Totale popolazione dei comuni che hanno ultimato la loro migrazione ad ANPR e quindi operano nella loro attività quotidiana direttamente sulla piattaforma. Per i cittadini di questi comuni ANPR è la sorgente di informazioni anagrafiche."
+        label: Resources.Get("populationMigrated"),
+            description: Resources.Get("populationMigratedInfo")
     },{
         id: "com_pre",
         value: summaries.com_pre,
-        label: "Comuni in presubentro",
-        description: "Numero comuni che hanno già inviato la loro anagrafe (ANPR locale) ad ANPR per la validazione e stanno compiendo test di integrazione, bonificando i dati anagrafici o che non hanno ancora pianificato una data definitiva per il passaggio in produzione."
+        label:  Resources.Get("municipalitiesPreMigrated"),
+        description: Resources.Get("municipalitiesPreMigratedInfo")
     },{
         id: "com_sub",
         value: summaries.com_sub,
-        label: "Comuni subentrati",
-        description: "Numero comuni che hanno ultimato la loro migrazione ad ANPR e quindi operano nella loro attività quotidiana direttamente sulla piattaforma. Per i cittadini di questi comuni ANPR è la sorgente di informazioni anagrafiche."
+        label: Resources.Get("municipalitiesMigrated"),
+        description: Resources.Get("municipalitiesMigratedInfo")
     }
 ];
 
@@ -463,7 +463,7 @@ var loadMap = function(map, source, layer) {
 	
 	map.addControl(new MapboxGeocoder({
             accessToken: mapboxgl.accessToken,
-            placeholder: "Cerca il tuo comune"
+            placeholder: Resources.Get("search")
     }));
 	
 	map.addControl(new mapboxgl.NavigationControl());
@@ -474,27 +474,25 @@ var anprFornitori = {
     "options":  {
 	"pagination": true,
 	"progressiveRender": true,
-	// "initialSort": [{ "column": "percentuale_comuni_subentrati", "dir": "desc" }],
-	//progressiveRender:"remote", //enable progressive rendering
-	//ajaxURL:"/data/page", //set the ajax URL
+	
 	"columns": [{
-	"title": "Nome Fornitore",
+	"title": Resources.Get("supplierName"),
 	    "field": "nome",
 	    "width": 180,
 	    "frozen": true
 	},{
-	    "title": "Percentuale Comuni Subentrati",
+	    "title": Resources.Get("supplierMigrationPerc"),
 	    "field": "percentuale_comuni_subentrati",
 	    "sorter": "number",
 	    "width": 220
 	},{
-	    "title": "Percentuale Comuni in Presubentro",
+	    "title": Resources.Get("supplierPreMigrationPerc"),
 	    "field": "percentuale_comuni_in_presubentro",
 	    "sorter": "number",
 	    "width": 250,
 	    "color": "orange"
 	},{
-	    "title": "Percentuale Comuni Inattivi",
+	    "title": Resources.Get("supplierInactivePerc"),
 	    "field": "percentuale_comuni_inattivi",
 	    "sorter": "number",
 	    "width": 230
@@ -502,20 +500,20 @@ var anprFornitori = {
 	//"resizableColumns":       true
     }
 }
-
+var ops = [{
+    "text": Resources.Get("statusMigratedWhen"),
+    "icon": "./img/hand_subentro.svg"
+},{
+    "text": Resources.Get("statusPreMigratedWhen"),
+    "icon": "./img/hand_presubentro.svg"
+},{
+    "text": Resources.Get("statusInactive"),
+    "icon": "./img/thumb-down.svg"
+}];
 var printMsg = function(d) {
     var i = 2, //default value: d.data_subentro === undefined && d.data_presubentro === undefined 
         date = "",
-        options = [{
-            "text": "subentrato in data ",
-            "icon": "./img/hand_subentro.svg"
-        },{
-            "text": "in presubentro dal ",
-            "icon": "./img/hand_presubentro.svg"
-        },{
-            "text": "inattivo al momento",
-            "icon": "./img/thumb-down.svg"
-        }];
+        options = ops;
 
     if (d.data_subentro !== undefined) {
         date = moment(d.data_subentro, "DD/MM/YYYY").format("DD/MM/YYYY");
@@ -526,23 +524,14 @@ var printMsg = function(d) {
 	if (!moment(date).isValid()) console.log(d.data_presubentro);
         i = 1;
     }
-
-    return "<p style='float: left;'><img src=" + options[i].icon + "></p>Il <b>comune di " + d.label + "</b><br> è " + options[i].text + date;
+    text =  i==2?Resources.GetWithArgs("statusTextInactive",[d.label]):Resources.GetWithArgs("statusText",[d.label, options[i].text,date]);
+    return "<p style='float: left;'><img src=" + options[i].icon + "></p>"+text;
 }
 
 var printPopup = function(d) {
     var i = 2, //default value: d.data_subentro === undefined && d.data_presubentro === undefined 
         date = "",
-        options = [{
-            "text": "subentrato in data ",
-            "icon": "./img/hand_subentro.svg"
-        },{
-            "text": "in presubentro dal ",
-            "icon": "./img/hand_presubentro.svg"
-        },{
-            "text": "inattivo al momento",
-            "icon": "./img/thumb-down.svg"
-        }];
+        options = ops;
 
     if (d.data_subentro !== undefined) {
         date = moment(d.data_subentro, "DD/MM/YYYY").format("DD/MM/YYYY");
@@ -553,27 +542,17 @@ var printPopup = function(d) {
 	if (!moment(date).isValid()) console.log(d.data_presubentro);
         i = 1;
     } 
-    // return "<p style='float: left;'><img src=" + options[i].icon + "></p>Il <b>comune di " + d.label + "</b><br> è " + options[i].text + date;
+    text =  i==2?Resources.GetWithArgs("statusTextInactive",[d.label]):Resources.GetWithArgs("statusText",[d.label, options[i].text,date]);
     return (
         '<div class="row mx-auto mb-4 p-4 popup-class "><img class="pl-0 pr-2" src="' + options[i].icon + '">' +
-        '<div>Il <b>comune di ' + d.label + '</b><br> è ' + options[i].text + date
-        + '</div></div>'
+        '<div>'+text+ '</div></div>'
     )
 }
 
 var printPopupMap = function(d) {
     var i = 2, //default value: d.data_subentro === undefined && d.data_presubentro === undefined 
         date = "",
-        options = [{
-            "text": "subentrato in data ",
-            "icon": "./img/hand_subentro.svg"
-        },{
-            "text": "in presubentro dal ",
-            "icon": "./img/hand_presubentro.svg"
-        },{
-            "text": "inattivo al momento",
-            "icon": "./img/thumb-down.svg"
-        }];
+        options = ops;
 
     if (d.data_subentro !== undefined) {
         date = moment(d.data_subentro, "DD/MM/YYYY").format("DD/MM/YYYY");
@@ -588,8 +567,9 @@ var printPopupMap = function(d) {
     return (
         '<div><img class="pl-0 pr-2" src="' + options[i].icon + '">' +
       // '<div <img class="pl-0 pr-2" src="' +  options[i].icon + '">' +
-       '<div>Il <b>comune di ' + d.label + '</b><br> è ' + options[i].text + date
-        + '</div></div>'
+       '<div>'+
+       //Il <b>comune di ' + d.label + '</b><br> è ' + options[i].text + date
+       Resources.GetWithArgs("statusText",[d.label,options[i].text, date]) +'</div></div>'
     )
 }
 

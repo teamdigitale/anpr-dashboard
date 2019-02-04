@@ -68,7 +68,7 @@ fetch(dataUrl)
 	$("#table-fornitori").tabulator(anprFornitori.options);
 	$("#table-fornitori").tabulator("setData", json.fornitori);
 
-	const subs = json.charts.subentro
+	var subs = json.charts.subentro
 
 	new Chart(document.getElementById("comSub"), {
 		type: 'line',
@@ -77,7 +77,7 @@ fetch(dataUrl)
 		  datasets: [{
 			  data: subs.map(function(sub){ return sub.popolazione}),
 				//label: "Popolazione",
-				label : "Popolazione",
+				label : Resources.Get("population"),
 			  borderColor: "#3e95cd",
 			  //backgroundColor: "#3e95cd",
 			  yAxisID: "pop" //,
@@ -85,7 +85,7 @@ fetch(dataUrl)
 			},
 			{
 				data: subs.map(function(sub) { return sub.comuni}),
-				label: "Comuni",
+				label:Resources.Get("municipalities"),
 				borderColor: "#8e5ea2",
 				//backgroundColor: "#8e5ea2",
 				yAxisID: "com"
@@ -94,7 +94,7 @@ fetch(dataUrl)
 			} , 
 			{
 					data: subs.map(function(sub) {return sub.popolazione_aire}),
-					label: "Popolazione Aire",
+					label: Resources.Get("populationAIRE"),
 					borderColor: "#3BB273",
 					backgroundColor: "#3BB273",
 					yAxisID: "pop",
@@ -106,7 +106,7 @@ fetch(dataUrl)
 		options: {
 		  title: {
 			display: true,
-			text: 'Popolazione e Comuni subentrati',
+			text: Resources.Get("populatioAndMunicMigrated"),
 
 		  },
 		  scales: {
@@ -127,25 +127,21 @@ fetch(dataUrl)
 				type: 'linear',
 				position: 'right'
 				}
-				/*,{
-					id: 'pop_aire',
-					type: 'linear',
-					position: 'right'
-					} */
+	
 			]
 		}
 		}
 	  });
 
 
-	  const presub = json.charts.presubentro
+	  var presub = json.charts.presubentro
 	  new Chart(document.getElementById("comPreSub"), {
 		type: 'line',
 		data: {
 		  labels: presub.map(function(sub) { return sub.date}),
 		  datasets: [{
 			  data: presub.map(function(sub){return sub.popolazione}),
-			  label: "Popolazione",
+			  label: Resources.Get("population"),
 			  borderColor: "#FFF966",
 			  //backgroundColor: "#3e95cd",
 			  yAxisID: "pop" //,
@@ -153,7 +149,7 @@ fetch(dataUrl)
 			},
 			{
 				data: presub.map(function(sub){return sub.comuni}),
-				label: "Comuni",
+				label: Resources.Get("municipalities"),
 				borderColor: "#8e5ea2",
 				//backgroundColor: "#8e5ea2",
 				yAxisID: "com"
@@ -165,7 +161,7 @@ fetch(dataUrl)
 		options: {
 		  title: {
 			display: true,
-			text: 'Popolazione e Comuni pre-subentrati',
+			text: Resources.Get("populatioAndMunicPreMigrated"),
 
 			} ,
 		  scales: {
@@ -193,19 +189,19 @@ fetch(dataUrl)
 fetch(predictionUrl)
     .then(function(response) {return response.json()})
 	  .then( function(json) {
-		  const dates = json.dates.map(function(date) { return moment(date)})
+		  var dates = json.dates.map(function(date) { return moment(date)})
 		  let cumsum = []
 		  json.populations.reduce(function(a,b,i) {
 			  return cumsum[i] = a+b;
 			}, 0)
-		  const populations = cumsum.slice(0, json.populations.length - 11)
-		  const predictions = cumsum.map(function(pop, index) {
+		  var populations = cumsum.slice(0, json.populations.length - 11)
+		  var predictions = cumsum.map(function(pop, index) {
 			  if (index < cumsum.length - 12){
 				  return null
 			  }
 			  return pop
 		  })
-		const totalPopPredictions = cumsum[cumsum.length - 1]
+		var totalPopPredictions = cumsum[cumsum.length - 1]
 	d3.select("#" + "predictions" )
 		.append("div")
 		.style("font-size", "35px")
@@ -250,14 +246,14 @@ fetch(predictionUrl)
 			  labels: dates,
 			  datasets: [{
 				  data: populations,
-				  label: "Popolazione",
+				  label: Resources.Get("population"),
 				  borderColor: "#3e95cd",
 				  backgroundColor: "#3e95cd" //,
 				  // fill: true
 				},
 				{
 				  data: predictions,
-				  label: "Popolazione prevista",
+				  label: Resources.Get("expectedPopulation"),
 				  borderColor: "#5FCE79", //,
 				  backgroundColor: "#5FCE79"//"#8e5ea2"
 				  //  fill: true
@@ -267,7 +263,7 @@ fetch(predictionUrl)
 			options: {
 			  title: {
 				display: true,
-				text: 'Popolazione subentrata e prevista prossimi 12 mesi',
+				text: Resources.Get("expectedPopulationInfo"),
 
 			  },
 			  stacked: true,

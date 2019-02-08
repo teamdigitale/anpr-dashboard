@@ -32,7 +32,7 @@ Resources.statusMigratedWhen = {"it":"subentrato il ","en":"migrated on "}
 Resources.statusPreMigratedWhen = {"it":"in pre subentro dal ","en":"in pre migration from "}
 Resources.statusInactive = {"it":"inattivo","en":"inactive"}
 Resources.statusText = {"it":"Il <b>comune di ?</b><br> è ? ?","en":"? is ? from ? ?"}
-Resources.statusInactive = {"it":"Il <b>comune di ?</b><br> è ? inattivo","en":"? is ? inactive"}
+Resources.statusInactiveText = {"it":"Il <b>comune di ?</b><br> è ? inattivo","en":"? is ? inactive"}
 
 
 //Search

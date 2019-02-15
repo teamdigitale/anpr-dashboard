@@ -524,6 +524,7 @@ var printMsg = function(d) {
 	if (!moment(date).isValid()) console.log(d.data_presubentro);
         i = 1;
     }
+    
     text =  i==2?Resources.GetWithArgs("statusTextInactive",[d.label]):Resources.GetWithArgs("statusText",[d.label, options[i].text,date]);
     return "<p style='float: left;'><img src=" + options[i].icon + "></p>"+text;
 }

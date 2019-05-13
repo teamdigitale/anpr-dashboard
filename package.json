@@ -22,6 +22,9 @@
     "gulp-uglify": "latest",
     "run-sequence": "^1.2.2"
   },
+  "scripts": {
+    "build": "gulp"
+  },
   "engines": {
     "node": ">=0.12.0"
   }

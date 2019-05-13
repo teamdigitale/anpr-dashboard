@@ -212,7 +212,7 @@ fetch(predictionUrl)
 		.append("span")
 		.style("font-size", "14px")
 		.html("Previsione a 12 mesi" + "&nbsp")
-	d3.select("#" + "predictions")
+/*	d3.select("#" + "predictions")
 		.append("i")
 		.attr("id", "predictions" + "_i")
 	.attr("class", "fas fa-info-circle fa-1x")
@@ -238,7 +238,7 @@ fetch(predictionUrl)
 			info.transition()
 				.duration(500)
 		.style("opacity", 0);
-		});
+		}); */
 
 		new Chart(document.getElementById("myChart"), {
 			type: 'line',

@@ -1,30 +1,37 @@
 # anpr-dashboard
 
+_You need **Node** and **npm** installed on your machine._
 
-In order to start a Simple HTTP server and run it locally run 
+## Installation
+
+Clone this repository:
+
+```shell
+git clone https://github.com/teamdigitale/anpr-dashboard
+cd anpr-dashboard/
+```
+
+Then install the Node dependencies, and build the assets:
+
+```shell
+npm i
+npm run build
+```
+
+## Usage
+
+You need a local web server to run the dashboard correctly.
+
+You can use Python's built-in HTTP server:
 
 ```
+# Python 2.x
 python -m SimpleHTTPServer 3300
-```
-The go to http://localhost:3300
 
-Data is loaded statically from file dashboardData.json 
+# Python 3.x
+python -m http.server 3300
+```
 
+The go to http://localhost:3300 to see the dashboard.
 
-To install Gulp in order to optimize use
-```
-npm install 
-```
-or 
-
-```
-npm install gulp-cli -g
-npm install gulp -D
-npx -p touch nodetouch gulpfile.js
-gulp --help
-```
-To create a dist version just run 
-
-```
-gulp
-```
+**Data is loaded statically from `dashboardData.json`.**

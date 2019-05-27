@@ -5,6 +5,22 @@
 
 mapboxgl.accessToken = "pk.eyJ1IjoidGVhbWRpZ2l0YWxlIiwiYSI6ImNqN3JsamdudjNqZG8yd3Q1Z3pxeG51YWUifQ.5fDbuvoLcC1f6n9g9nTgXA";
 
+function checkUrl(data){
+	var urlParams = new URLSearchParams(window.location.search);
+	var comune = urlParams.get('comune')
+	if(comune){
+		var choosen = data.filter(function(item){
+			return (item.label === comune.toUpperCase())
+		})
+		if (choosen.length > 0){
+			$("#tags").val(comune.toUpperCase())
+			$("#popup").html(printPopup(choosen[0]));
+		}
+	}
+}
+
+
+
 fetch(dataUrl)
     .then(function(response) {
 			return response.json()})
@@ -17,6 +33,7 @@ fetch(dataUrl)
 	//load searchbar
 	var properties = json.geojson.features.map(function(d){ return d.properties});
 	createSearchBar(properties);
+	checkUrl(properties)
 
 	//initialize maps
 	var maps = [

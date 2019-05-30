@@ -1899,9 +1899,9 @@
       "dev": true
     },
     "node-releases": {
-      "version": "1.1.21",
-      "resolved": "https://registry.npmjs.org/node-releases/-/node-releases-1.1.21.tgz",
-      "integrity": "sha512-TwnURTCjc8a+ElJUjmDqU6+12jhli1Q61xOQmdZ7ECZVBZuQpN/1UnembiIHDM1wCcfLvh5wrWXUF5H6ufX64Q==",
+      "version": "1.1.22",
+      "resolved": "https://registry.npmjs.org/node-releases/-/node-releases-1.1.22.tgz",
+      "integrity": "sha512-O6XpteBuntW1j86mw6LlovBIwTe+sO2+7vi9avQffNeIW4upgnaCVm6xrBWH+KATz7mNNRNNeEpuWB7dT6Cr3w==",
       "dev": true,
       "dependencies": {
         "semver": {

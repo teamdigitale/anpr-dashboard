@@ -353,9 +353,9 @@
       "dev": true
     },
     "caniuse-lite": {
-      "version": "1.0.30000976",
-      "resolved": "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30000976.tgz",
-      "integrity": "sha512-tleNB1IwPRqZiod6nUNum63xQCMN96BUO2JTeiwuRM7p9d616EHsMBjBWJMudX39qCaPuWY8KEWzMZq7A9XQMQ==",
+      "version": "1.0.30000977",
+      "resolved": "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30000977.tgz",
+      "integrity": "sha512-RTXL32vdfAc2g9aoDL6vnBzbOO/3sM+T+YX4m7W9iFZnl3qIz7WYoZZpcZpALud8xq4+N56rnruX/NQy9HQu6A==",
       "dev": true
     },
     "caseless": {

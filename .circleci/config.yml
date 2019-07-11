@@ -72,7 +72,7 @@ jobs:
       - checkout
       - << : *npm_permissions
       - << : *npm_install
-      - << : *update_dashboard_data
+        #      - << : *update_dashboard_data
       - << : *gulp_build
       - << : *create_cname
 

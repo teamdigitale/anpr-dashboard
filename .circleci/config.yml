@@ -86,7 +86,7 @@ workflows:
   update-dashboard:
     triggers:
       - schedule:
-          cron: "35 * * * *"
+          cron: "* * * * *"
           filters:
             branches:
               only:

@@ -32,14 +32,14 @@ references:
         git pull
 
         if [ `curl -s -w "%{http_code}" --compress -o /tmp/dashboardData.json https://api.daf.teamdigitale.it/anpr/dashboardData.json` = "200" ]; then
-          if [ /tmp/dashboardData.json -lt 2000000 ]; then
+          if [ $(stat --printf="%s" /tmp/dashboardData.json) -lt 2000000 ]; then
             echo "dashboard data updated" && \
             cp /tmp/dashboardData.json .
           fi
         fi
 
         if [ `curl -s -w "%{http_code}" --compress -o /tmp/previsioni.json https://api.daf.teamdigitale.it/anpr/previsioni` = "200" ]; then
-          if [ /tmp/previsioni.json -lt 4000 ]; then
+          if [ $(stat --printf="%s" /tmp/previsioni.json) -lt 4000 ]; then
            echo "prevision data updated" && \
            cp /tmp/previsioni.json .
           fi

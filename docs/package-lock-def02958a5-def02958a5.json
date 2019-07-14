@@ -303,9 +303,9 @@
       }
     },
     "browserslist": {
-      "version": "4.6.4",
-      "resolved": "https://registry.npmjs.org/browserslist/-/browserslist-4.6.4.tgz",
-      "integrity": "sha512-ErJT8qGfRt/VWHSr1HeqZzz50DvxHtr1fVL1m5wf20aGrG8e1ce8fpZ2EjZEfs09DDZYSvtRaDlMpWslBf8Low==",
+      "version": "4.6.5",
+      "resolved": "https://registry.npmjs.org/browserslist/-/browserslist-4.6.5.tgz",
+      "integrity": "sha512-6MJa56llNfIcHwNKvtiR0A7aCCIFECbMGq+egK8d4I2J4hX6CArxvx66tH27rlT9vKDpAd8+htI94Y9X9pJfEA==",
       "dev": true
     },
     "bufferstreams": {

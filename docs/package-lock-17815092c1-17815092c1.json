@@ -998,9 +998,9 @@
       "dev": true
     },
     "graceful-fs": {
-      "version": "3.0.11",
-      "resolved": "https://registry.npmjs.org/graceful-fs/-/graceful-fs-3.0.11.tgz",
-      "integrity": "sha1-dhPHeKGv6mLyXGMKCG1/Osu92Bg=",
+      "version": "3.0.12",
+      "resolved": "https://registry.npmjs.org/graceful-fs/-/graceful-fs-3.0.12.tgz",
+      "integrity": "sha512-J55gaCS4iTTJfTXIxSVw3EMQckcqkpdRv3IR7gu6sq0+tbC363Zx6KH/SEwXASK9JRbhyZmVjJEVJIOxYsB3Qg==",
       "dev": true
     },
     "gulp": {
@@ -2325,9 +2325,9 @@
       "dev": true
     },
     "rimraf": {
-      "version": "2.6.3",
-      "resolved": "https://registry.npmjs.org/rimraf/-/rimraf-2.6.3.tgz",
-      "integrity": "sha512-mwqeW5XsA2qAejG46gYdENaxXjx9onRNCfn7L0duuP4hCuTIi/QO7PDK07KJfp1d+izWPrzEJDcSqBa0OZQriA==",
+      "version": "2.7.0",
+      "resolved": "https://registry.npmjs.org/rimraf/-/rimraf-2.7.0.tgz",
+      "integrity": "sha512-4Liqw7ccABzsWV5BzeZeGRSq7KWIgQYzOcmRDEwSX4WAawlQpcAFXZ1Kid72XYrjSnK5yxOS6Gez/iGusYE/Pw==",
       "dev": true
     },
     "run-sequence": {

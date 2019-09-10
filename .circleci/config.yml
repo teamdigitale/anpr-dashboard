@@ -31,7 +31,6 @@ references:
         git config --global user.name "Deploy Bot"
         git pull
 
-      # if [ `curl -s -w "%{http_code}" --compress -o /tmp/dashboardData.json https://api.daf.teamdigitale.it/anpr/dashboardData.json` = "200" ]; then
         if [ `curl -s -w "%{http_code}" --compress -o /tmp/dashboardData.json https://dashboard.anpr.it/api/dashboard/data.json` = "200" ]; then
           if [ $(stat --printf="%s" /tmp/dashboardData.json) -gt 2000000 ]; then
             echo "dashboard data updated" && \

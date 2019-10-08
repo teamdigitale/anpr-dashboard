@@ -1,0 +1,209 @@
+hostnames: ["dashboard.anpr.it"]
+options:
+  sslcachedir: "/opt/dashboard/sslcache/"
+  paths:
+    /srv/anpr/site/static/:
+      viewers: ["team_anpr", "team_anpr_readers", "map_viewers"]
+storageoptions:
+  databasepath: "/srv/anpr/db/db.sqlite"
+  checkdatalistpath: "/var/cache/dashboard_scripts/anpr/DatiCheckListV3.3.xml"
+  anomalieschedesoggettopath: "/var/cache/dashboard_scripts/anpr/AnomalieSchedeSoggettoPreSubV.2.xml"
+  notifyemail: ["team-anpr-changes@teamdigitale.governo.it","gleonforte@sogei.it","cmigliardi@sogei.it","amollicone@sogei.it","rvinzani@sogei.it","frmariani@sogei.it","azabatta@sogei.it","ncapozzi@sogei.it","gpapi@sogei.it", "fbartoloni@sogei.it","rnapoli@sogei.it","lrbianchi@sogei.it","anbatistini@sogei.it","fferraguto@sogei.it","mschiappa@sogei.it","azangari@sogei.it","mttfranci@sogei.it","asqueglia@sogei.it","gferraro@sogei.it"]
+  fornitoriacls:
+      "ADS - GRUPPO FINMATICA":
+        readers: ["ads", "team_anpr", "team_anpr_readers"]
+        writers: ["ads", "team_anpr"]
+      "ADVANCED SYSTEMS":
+        readers: ["advancedsystems", "team_anpr", "team_anpr_readers"]
+        writers: ["advancedsystems", "team_anpr"]
+      "ALPHASOFT SRL":
+        readers: ["alphasoft", "halley", "team_anpr", "team_anpr_readers"]
+        writers: ["alphasoft", "halley", "team_anpr"]
+      "ANDROMEDA INFORMATICA SRL":
+        readers: ["andromeda", "team_anpr", "team_anpr_readers"]
+        writers: ["andromeda", "team_anpr"]
+      "AP SYSTEMS":
+        readers: ["apsystems", "team_anpr", "team_anpr_readers"]
+        writers: ["apsystems", "team_anpr"]
+      "ARIONLINE":
+        readers: ["arionline", "team_anpr", "team_anpr_readers"]
+        writers: ["arionline", "team_anpr"]
+      "C&C Sistemi S.r.l.":
+        readers: ["cecsistemi", "team_anpr", "team_anpr_readers"]
+        writers: ["cecsistemi", "team_anpr"]
+      "Comune di Bologna":
+        readers: ["comunedibologna", "team_anpr", "team_anpr_readers"]
+        writers: ["comunedibologna", "team_anpr"]
+      "CSI PIEMONTE":
+        readers: ["csipiemonte", "team_anpr", "team_anpr_readers"]
+        writers: ["csipiemonte", "team_anpr"]
+      "DATA MANAGEMENT":
+        readers: ["datamanagement", "team_anpr", "team_anpr_readers"]
+        writers: ["datamanagement", "team_anpr"]
+      "DATAGRAPH SRL":
+        readers: ["datagraph", "team_anpr", "team_anpr_readers"]
+        writers: ["datagraph", "team_anpr"]
+      "DEDAGROUP SPA":
+        readers: ["dedagroup", "team_anpr", "team_anpr_readers"]
+        writers: ["dedagroup", "team_anpr"]
+      "GOLEM SRL":
+        readers: ["golemsrl", "team_anpr", "team_anpr_readers"]
+        writers: ["golemsrl", "team_anpr"]
+      "HALLEY INFORMATICA":
+        readers: ["halley", "team_anpr", "team_anpr_readers"]
+        writers: ["halley", "team_anpr"]
+      "INF.OR SRL":
+        readers: ["infor", "team_anpr", "team_anpr_readers"]
+        writers: ["infor", "team_anpr"]
+      "INSIEL":
+        readers: ["insiel", "team_anpr", "team_anpr_readers"]
+        writers: ["insiel", "team_anpr"]
+      "INSIEL MERCATO":
+        readers: ["insielmercato", "team_anpr", "team_anpr_readers"]
+        writers: ["insielmercato", "team_anpr"]     
+      "INTERDATA SRL":
+        readers: ["interdata", "team_anpr", "team_anpr_readers"]
+        writers: ["interdata", "team_anpr"]
+      "ITALEDIT":
+        readers: ["italedit", "team_anpr", "team_anpr_readers"]
+        writers: ["italedit", "team_anpr"]
+      "KIBERNETES SRL":
+        readers: ["kibernetes", "team_anpr", "team_anpr_readers"]
+        writers: ["kibernetes", "team_anpr"]
+      "MAGGIOLI":
+        readers: ["maggioli", "team_anpr", "team_anpr_readers"]
+        writers: ["maggioli", "team_anpr"]
+      "OMNIA SYSTEMS SRL":
+        readers: ["omniasystem", "team_anpr", "team_anpr_readers"]
+        writers: ["omniasystem", "team_anpr"]
+      "PA DIGITALE":
+        readers: ["padigitale", "team_anpr", "team_anpr_readers"]
+        writers: ["padigitale", "team_anpr"]
+      "PAL INFORMATICA":
+        readers: ["palinformatica", "team_anpr", "team_anpr_readers"]
+        writers: ["palinformatica", "team_anpr"]
+      "PUBLISYS SPA":
+        readers: ["publisys", "team_anpr", "team_anpr_readers"]
+        writers: ["publisys", "team_anpr"]
+      "SAGA":
+        # i gestionali saga sono di maggioli
+        readers: ["maggioli", "team_anpr", "team_anpr_readers"]
+        writers: ["maggioli", "team_anpr"]
+      "SCAP SISTEMI SRL":
+        readers: ["scapsistemi", "team_anpr", "team_anpr_readers"]
+        writers: ["scapsistemi", "team_anpr"]
+      "SERVIZI LOCALI SPA":
+        readers: ["servizilocalispa", "team_anpr", "team_anpr_readers"]
+        writers: ["servizilocalispa", "team_anpr"]
+      "SISCOM":
+        readers: ["siscom", "team_anpr", "team_anpr_readers"]
+        writers: ["siscom", "team_anpr"]
+      "SINTECOOP GHI SRL":
+        readers: ["sintecoop", "halley", "team_anpr", "team_anpr_readers"]
+        writers: ["sintecoop", "halley", "team_anpr"]
+      "SIPAL INFORMATICA - GRUPPO MAGGIOLI":
+        readers: ["sipal", "team_anpr", "team_anpr_readers"]
+        writers: ["sipal", "team_anpr"]
+      "IBM Sistemi Informativi":
+        readers: ["sistinf", "team_anpr", "team_anpr_readers"]
+        writers: ["sistinf", "team_anpr"]
+      "STUDIO K SRL":
+        readers: ["studiok", "team_anpr", "team_anpr_readers"]
+        writers: ["studiok", "team_anpr"]
+      "TINN SERVICE":
+        readers: ["tinnservice", "team_anpr", "team_anpr_readers"]
+        writers: ["tinnservice", "team_anpr"]
+      "DEMOS DATA":
+        readers: ["desmosdata", "team_anpr", "team_anpr_readers"]
+        writers: ["desmosdata", "team_anpr"]
+      "WINXPAL":
+        readers: ["winxpal","siscom", "team_anpr", "team_anpr_readers"]
+        writers: ["winxpal","siscom", "team_anpr"]
+      "DATANET":
+        readers: ["datanet","team_anpr", "team_anpr_readers"]
+        writers: ["datanet","team_anpr"]
+        
+
+
+groups:
+  - id: "map_viewers"
+    members: ["@agid.gov.it", "@sogei.it", "pasceri@gmail.com", "matteo.troia@camera.it", "coppola_p@camera.it", "guido.pera@gmail.com", "vincenzo.travascio@gmail.com", "e.gullo@palazzochigi.it", "elio.gullo@gmail.com", "v.guida975@gmail.com", "v.guida@ipzs.it", "a.antetomaso@ipzs.it"]
+  - id: "team_anpr"
+    members: ["mirko@teamdigitale.governo.it", "marco@teamdigitale.governo.it", "gleonforte@sogei.it", "cramella@sogei.it", "cmigliardi@sogei.it","gpapi@sogei.it","fbartoloni@sogei.it","clanza@sogei.it","cmigliardi@sogei.it","gferraro@sogei.it","rvinzani@sogei.it","azabatta@sogei.it","ncapozzi@sogei.it","frmariani@sogei.it","amollicone@sogei.it","gferraro@sogei.it","mttfranci@sogei.it"]
+  - id: "team_anpr_readers"
+    apikeys: ["3B6035A5-192D-4058-AD4E-75E676B88252"]
+    members: ["@teamdigitale.governo.it", "pera@agid.gov.it", "vincenzo.travascio@agid.gov.it", "adenatale@gmail.com"]
+  - id: "ads"
+    members: ["c.olivato@ads.it"]
+  - id: "advancedsystems"
+    members: ["francesco.finelli@advancedsystems.it"]
+  - id: "alphasoft"
+    members: []
+  - id: "andromeda"
+    members: []
+  - id: "apsystems"
+    members: ["monica.stagnoli@apsystems.it","luigi.fatigati@apkappa.it","lai@arionline.it"]
+  - id: "arionline"
+    members: ["monica.stagnoli@apsystems.it","luigi.fatigati@apkappa.it","lai@arionline.it"]
+  - id: "cecsistemi"
+    members: ["andrea.verrando@cecsistemi.it","riccardo.benedetti@cecsistemi.it","carlo.rizzo@cecsistemi.it","daniel.carenzo@cecsistemi.it"]
+  - id: "comunedibologna"
+    members: ["pina.civitella@comune.bologna.it","roberta.fiori@comune.bologna.it","salvatore.greco@comune.bologna.it"]
+  - id: "csipiemonte"
+    members: []
+  - id: "datagraph"
+    members: ["alessio.tropeano@datagraph.it"]
+  - id: "datamanagement"
+    members: ["annarita.francioso@datamanagementitalia.it", "mara.dellasantina@datamanagementitalia.it","luisa.vassura@datamanagementitalia.it","samantha.barberini@datamanagementitalia.it", "cristina.bonazza@datamanagementitalia.it"]
+  - id: "dedagroup"
+    members: ["nicolagiovanni.Lupo@dedagroup.it","annalisa.rossi@dedagroup.it","anna.dibenedetto@dedagroup.it", "roberta.biasi@dedagroup.it","marco.nichelatti@dedagroup.it"]
+  - id: "halley"
+    members: ["halleynt@halley.it","dercole@halleycampania.it","luciano.i@alice.it","ardix82@yahoo.it","maclementi@alice.it","info@halleyveneto.it","assistenza@halleygrosseto.it","info@halleylombardia.it","segreteria@halleytoscana.it","salvatore.spagnolo@svic.it","info@florenssrl.it","anpr@halleysardegna.it","info@soluzionihalley.it","affarigenerali@halleyconsulting.it","halleynt@halley.it","protocollo@immediaspa.com"]
+  - id: "infor"
+    members: ["mvirgillo@infor.arezzo.it"]
+  - id: "insiel"
+    members: ["luigi.decrignis@insiel.it","jacopo.sanna@insiel.it"]
+  - id: "insielmercato"
+    members: ["raffaele.toniolo@insielmercato.it"]
+  - id: "interdata"
+    members: []
+  - id: "italedit"
+    members: ["c.arca@italedit.it","assistenza@italedit.it","italedit_italedit@libero.it"]
+  - id: "golemsrl"
+    members: ["f.russo@icasystems.it","l.benedetti@icasystems.it","m.olmari@icasystems.it","adriano.panico@golemplus.eu"]
+  - id: "kibernetes"
+    members: ["rmarzano@kibernetes-rc.it","fcastellani@kibernetes-tv.it"]
+  - id: "maggioli"
+    members: ["alberto.zini@maggioli.it","luisa.vassura@maggioli.it"]
+  - id: "omniasystem"
+    members: ["info@omniasystems.com"]
+  - id: "padigitale"
+    members: ["monica.rollandi@padigitale.it","giancarlo.pulga@padigitale.it"]
+  - id: "palinformatica"
+    members: ["m.migliori@palinformatica.it","v.angeletti@palinformatica.it"]
+  - id: "publisys"
+    members: ["fanellisergio@publisys.it"]
+  - id: "scapsistemi"
+    members: []
+  - id: "servizilocalispa"
+    members: ["eduardo.gira@servizilocalispa.it"]
+  - id: "siscom"
+    members: ["selene@siscom.eu", "siscom@siscom.eu", "fabriziomilanesio@siscom.eu"]
+  - id: "sipal"
+    members: ["alessandro.cagnazzo@sipalinformatica.it", "alberto.zolin@sipalinformatica.it"]
+  - id: "sistinf"
+    members: ["paolo.molinari@sistinf.it"]
+  - id: "studiok"
+    members: ["mpedrazzoli@studiok.it","francesco.alberti@apkappa.it","lai@arionline.it"]
+  - id: "sintecoop"
+    members: []
+  - id: "tinnservice"
+    members: ["amucciarelli@tinn.it","rmarconetta@tinn.it","srubini@tinn.it","adamico@tinn.it","a.ciangoli@ictglobalservice.it","g.corgiolu@ollsys.net"]
+    
+  - id: "desmosdata"
+    members: ["info@demosdata.it","emanuele@demosdata.it","selene@siscom.eu", "siscom@siscom.eu", "fabriziomilanesio@siscom.eu"]
+  - id: "winxpal"
+    members: ["info@winxpal.it"]
+  - id: "datanet"
+    members: ["a.parlato@datanetsrl.eu"]
+

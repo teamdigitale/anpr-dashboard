@@ -27,7 +27,5 @@
   },
   "scripts": {
     "build": "gulp"
-  },
-
-  
+  }
 }

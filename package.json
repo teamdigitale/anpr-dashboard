@@ -9,7 +9,7 @@
     "url": "https://github.com/amardeeprai/local-minifier"
   },
   "devDependencies": {
-    "del": "latest",
+    "del": "^2.0.2",
     "gulp": "latest",
     "gulp-autoprefixer": "latest",
     "gulp-concat": "latest",

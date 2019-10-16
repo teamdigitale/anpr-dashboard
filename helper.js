@@ -132,6 +132,7 @@ var anprLayers = [{
 }];
 
 var createSummaryBoxes = function(summaries) {
+     
     var info = d3.select("body")
         .append("div")
         .attr("class", "info-tooltip")
@@ -164,7 +165,7 @@ var createSummaryBoxes = function(summaries) {
             .append("div")
             .style("font-size", "35px")
             .style("font-weight", "bold")
-            .html(s.value.toLocaleString("en"))
+            .html(s.value.toLocaleString(Resources.GetLang()))
             .attr("dy", "0em");
         d3.select("#" + s.id)
             .append("span")

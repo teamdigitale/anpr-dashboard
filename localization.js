@@ -68,6 +68,10 @@ Resources.Get = function(label){
     lang = Resources.getParameterByName("lang")=="en"?"en":"it";
     return  Resources[label][lang];
 }
+Resources.GetLang = function(){
+    return lang = Resources.getParameterByName("lang")=="en"?"en":"it";
+    
+}
 /**Accepts an array of arguments */
 Resources.GetWithArgs = function(label,args){
     

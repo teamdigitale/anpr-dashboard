@@ -648,9 +648,9 @@
       "optional": true
     },
     "electron-to-chromium": {
-      "version": "1.3.308",
-      "resolved": "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.3.308.tgz",
-      "integrity": "sha512-IwU/0LTzTa03Q0YDzg11RlK8e/V92tmPqFOaTEsdv7JJXtC/+v/H4bT2FmsA/xaFQWJvi0ZVcRppw8o0AD9XJQ==",
+      "version": "1.3.309",
+      "resolved": "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.3.309.tgz",
+      "integrity": "sha512-NZd91XD15v2UPLjYXoN/gLnkwIUQjdH4SQLpRCCQiYJH6BBkfgp5pWemBJPr1rZ2dl8Ee3o91O9Sa1QuAfZmog==",
       "dev": true
     },
     "end-of-stream": {

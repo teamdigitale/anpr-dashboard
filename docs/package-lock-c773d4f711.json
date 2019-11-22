@@ -2283,9 +2283,9 @@
       "optional": true
     },
     "resolve": {
-      "version": "1.12.0",
-      "resolved": "https://registry.npmjs.org/resolve/-/resolve-1.12.0.tgz",
-      "integrity": "sha512-B/dOmuoAik5bKcD6s6nXDCjzUKnaDvdkRyAk6rsmsKLipWj4797iothd7jmmUhWTfinVMU+wc56rYKsit2Qy4w==",
+      "version": "1.12.1",
+      "resolved": "https://registry.npmjs.org/resolve/-/resolve-1.12.1.tgz",
+      "integrity": "sha512-+j3UVImywlkdEOzjNCk379mEqqUEmHgCmUDQkmVVwDkBVopfk/TqrBrr8ZfKZSnCqW/sgyuACFVjBwoB5Mw56A==",
       "dev": true
     },
     "resolve-dir": {

@@ -1,37 +1,70 @@
-# anpr-dashboard
+# ANPR Dashboard (stato-migrazione)
 
-_You need **Node** and **npm** installed on your machine._
+The ANPR dashboard is a static, web application that reads data from two local json files ([dashboardData.json](dashboardData.json) and [previsioni.json](previsioni.json)) and represents them in form of charts in a web page.
 
-## Installation
+## Requirements
 
-Clone this repository:
+The assets produced by the builds can run on any web server able to serve static content (html, js and css files).
+
+To build and minify the source files, thus making them ready for being deployed, or to run a local development server, you'll need the following tools:
+
+* [NodeJs](https://nodejs.org/) - any version should be fine, although at the moment of the writing we're using 11.10. This is needed by NPM (below)
+
+* [Node Package Manager (NPM)](https://www.npmjs.com/get-npm). This is the package manager used to install dependencies
+
+## Build and minify for deployments
+
+To build and minify the source code, thus making it ready for deployments (final artifact can be copied as is to a web server), simply run:
 
 ```shell
-git clone https://github.com/teamdigitale/anpr-dashboard
-cd anpr-dashboard/
-```
+# Install dependencies
+npm install
 
-Then install the Node dependencies, and build the assets:
-
-```shell
-npm i
+# Build and minify
 npm run build
 ```
 
-## Usage
+You should find the new minified assets in the *docs* folder of this repository.
 
-You need a local web server to run the dashboard correctly.
+The dashboard website is currently deployed through [GitHub pages](https://github.com/teamdigitale/anpr-dashboard), which automatically "renders" the files in the *docs* directory (produced by the build process described above).
 
-You can use Python's built-in HTTP server:
+## Run and test the application locally
 
+The paragraph describes how to run the application locally for development purposes.
+
+```shell
+# Install dependencies
+npm install
+
+# Build the assets and minify with gulp.
+# Then, start the local development server
+npm start
 ```
-# Python 2.x
-python -m SimpleHTTPServer 3300
 
-# Python 3.x
-python -m http.server 3300
-```
+You should now be able to see the dashboard opening a browser and pointing it to `http://localhost:8080`.
 
-The go to http://localhost:3300 to see the dashboard.
+## Update data sources and automation
 
-**Data is loaded statically from `dashboardData.json`.**
+The application makes use of two local data sources ([dashboardData.json](dashboardData.json) and [previsioni.json](previsioni.json)), located in the root of the repository. The two files already present in the repository should reflect the last ones uploaded, that the website is showing to users. In order to show new data, you'll need to change the files in the root directory, run the build once again, and push to GitHub the changes.
+
+The process is fully automated through [CircleCI](https://circleci.com), which every hour runs a [custom pipeline](.circleci/config.yml) that:
+
+* Downloads the latest files (if not found, it keeps the local ones)
+
+* Builds the assets and minifies
+
+* Pushes the changes to the GitHub repository
+
+## How to contribute
+
+Contributions are welcome! Feel free to open issues and submit a pull request at any time.
+
+## License
+
+Copyright (c) 2019 Presidenza del Consiglio dei Ministri
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License along with this program.  If not, see <https://www.gnu.org/licenses/>.

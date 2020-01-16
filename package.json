@@ -20,12 +20,15 @@
     "gulp-rev-delete-original": "latest",
     "gulp-rev-rewrite": "2.0.0",
     "gulp-uglify": "latest",
+    "http-server": "^0.12.1",
     "run-sequence": "^1.2.2"
   },
   "engines": {
     "node": ">=0.12.0"
   },
   "scripts": {
-    "build": "gulp"
-  }
+    "build": "gulp",
+    "start": "gulp && http-server ./docs"
+  },
+  "dependencies": {}
 }

@@ -38,13 +38,6 @@ references:
           fi
         fi
 
-        if [ `curl -s -w "%{http_code}" --compress -o /tmp/previsioni.json https://api.daf.teamdigitale.it/anpr/previsioni` = "200" ]; then
-          if [ $(stat --printf="%s" /tmp/previsioni.json) -gt 800 ]; then
-           echo "prevision data updated" && \
-           cp /tmp/previsioni.json .
-          fi
-        fi
-
         git commit -a  -m "Automated deployment to GitHub Pages: ${CIRCLE_SHA1}" || echo "."
         git push origin $CIRCLE_BRANCH
   # Optimize site files with gulp

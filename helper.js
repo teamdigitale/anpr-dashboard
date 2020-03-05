@@ -4,7 +4,7 @@ var anprLayers = [{
     "filter": function(d) {
         return (d.data_subentro !== undefined && d.data_subentro !== "");
     },
-    "mapboxFilter": ["has", "data_subentro"], 
+    "mapboxFilter": ["has", "data_subentro"],
     "sorter": function(a, b){
 	var diff = moment(a.data_subentro, "DD/MM/YYYY").diff(moment(b.data_subentro, "DD/MM/YYYY"), 'days');
         if (diff < 0) return 1;
@@ -132,7 +132,7 @@ var anprLayers = [{
 }];
 
 var createSummaryBoxes = function(summaries) {
-     
+
     var info = d3.select("body")
         .append("div")
         .attr("class", "info-tooltip")
@@ -174,17 +174,7 @@ var createSummaryBoxes = function(summaries) {
         d3.select("#" + s.id)
             .append("i")
             .attr("id", s.id + "_i")
-	    .attr("class", "fas fa-info-circle fa-1x")
-            .style("visibility", "hidden");
-        d3.select("#" + s.id)
-            .on("mouseover", function() {
-                d3.select("#" + s.id + "_i")
-                    .style("visibility", "visible");
-            })
-            .on("mouseout", function() {
-                d3.select("#" + s.id + "_i")
-                    .style("visibility", "hidden");
-            });
+	    .attr("class", "fas fa-info-circle fa-1x");
         d3.select("#" + s.id + "_i")
             .on("mouseover", function() {
                 info.transition()
@@ -197,12 +187,12 @@ var createSummaryBoxes = function(summaries) {
             .on("mouseout", function() {
                 info.transition()
                     .duration(500)
-		    .style("opacity", 0);
+		            .style("opacity", 0);
             });
     });
 };
 
-// example input data: [{ "label":"ABANO TERME", "PROVINCIA":"PD", "REGIONE":"Veneto", "ZONA":"Nord-Est", "popolazione":19349}}, {"label": "ABBADIA CERRETO", "PROVINCIA":"LO", "REGIONE":"Lombardia", "ZONA":"Nord-Ovest", "popolazione":297 ,"data_subentro":"2018-10-26T00:00:00.000Z" ,"data_presubentro":"2018-05-22T00:00:00.000Z"}}]         
+// example input data: [{ "label":"ABANO TERME", "PROVINCIA":"PD", "REGIONE":"Veneto", "ZONA":"Nord-Est", "popolazione":19349}}, {"label": "ABBADIA CERRETO", "PROVINCIA":"LO", "REGIONE":"Lombardia", "ZONA":"Nord-Ovest", "popolazione":297 ,"data_subentro":"2018-10-26T00:00:00.000Z" ,"data_presubentro":"2018-05-22T00:00:00.000Z"}}]
 var createSearchBar = function(data) {
     $.ui.autocomplete.filter = function(array, term) {
         var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(term), "i");
@@ -234,9 +224,9 @@ var loadMap = function(map, source, layer) {
 	var color = layer.color;
 	var property = layer.property;
     var layerId = "layer-" + id;
-    
+
     // test remember to delete
- 
+
 
     if(id === 'subentro') {
         var newSource = {}
@@ -249,7 +239,7 @@ var loadMap = function(map, source, layer) {
             clusterMaxZoom: 5, // Max zoom to cluster points on
             clusterRadius: 50
         });
-        
+
         map.addLayer({
             id: "clusters",
             type: "circle",
@@ -294,7 +284,7 @@ var loadMap = function(map, source, layer) {
             clusterMaxZoom: 5, // Max zoom to cluster points on
             clusterRadius: 50
     })
-    
+
     map.addLayer({
         id: "clusters",
         type: "circle",
@@ -336,7 +326,7 @@ var loadMap = function(map, source, layer) {
             clusterMaxZoom: 5, // Max zoom to cluster points on
             clusterRadius: 50
 	}); */
-	
+
 	// Find the index of the first symbol layer in the map style
 /*	var layers = map.getStyle().layers;
 	var firstSymbolId = null;
@@ -346,7 +336,7 @@ var loadMap = function(map, source, layer) {
 		break;
             }
     }*/
-    
+
     // Test cluster
     /*
     map.addLayer({
@@ -415,7 +405,7 @@ var loadMap = function(map, source, layer) {
 		"circle-opacity": 0.7
 	    }
     }, firstSymbolId); */
-    
+
     map.addLayer({
         id: "unclustered",
         type: "circle",
@@ -428,45 +418,45 @@ var loadMap = function(map, source, layer) {
            // "circle-stroke-color": "#fff"
         }
     });
-		
+
 	//map.setFilter(layerId) // layer.mapboxFilter);
 	//map.setFilter(layerId)
-	//POPUP ON EACH COMUNE                           
+	//POPUP ON EACH COMUNE
 	var popup = new mapboxgl.Popup({
             closeButton: false,
             closeOnClick: false
 	});
-	
+
 	map.on("mouseenter", "unclustered", function(e) {
-            // Change the cursor style as a UI indicator.                             
+            // Change the cursor style as a UI indicator.
             map.getCanvas().style.cursor = "pointer";
-	    
+
             var coordinates = e.features[0].geometry.coordinates.slice();
-	    
-            // Ensure that if the map is zoomed out such that multiple                                                                                 
-            // copies of the feature are visible, the popup appears                     
-            // over the copy being pointed to. 
+
+            // Ensure that if the map is zoomed out such that multiple
+            // copies of the feature are visible, the popup appears
+            // over the copy being pointed to.
            // while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
 		   //    coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
            // }
-	    
-            // Populate the popup and set its coordinates                                                                             
-            // based on the feature found.                                            
+
+            // Populate the popup and set its coordinates
+            // based on the feature found.
             popup.setLngLat(e.lngLat)
 		    .setHTML(printMsg(e.features[0].properties))
 		    .addTo(map);
 	});
-	
+
 	map.on("mouseleave", "unclustered", function() {
             map.getCanvas().style.cursor = "";
             popup.remove();
 	});
-	
+
 	map.addControl(new MapboxGeocoder({
             accessToken: mapboxgl.accessToken,
             placeholder: Resources.Get("search")
     }));
-	
+
 	map.addControl(new mapboxgl.NavigationControl());
     });
 };
@@ -475,7 +465,7 @@ var anprFornitori = {
     "options":  {
 	"pagination": true,
 	"progressiveRender": true,
-	
+
 	"columns": [{
 	"title": Resources.Get("supplierName"),
 	    "field": "nome",
@@ -512,7 +502,7 @@ var ops = [{
     "icon": "./img/thumb-down.svg"
 }];
 var printMsg = function(d) {
-    var i = 2, //default value: d.data_subentro === undefined && d.data_presubentro === undefined 
+    var i = 2, //default value: d.data_subentro === undefined && d.data_presubentro === undefined
         date = "",
         options = ops;
 
@@ -530,7 +520,7 @@ var printMsg = function(d) {
 }
 
 var printPopup = function(d) {
-    var i = 2, //default value: d.data_subentro === undefined && d.data_presubentro === undefined 
+    var i = 2, //default value: d.data_subentro === undefined && d.data_presubentro === undefined
         date = "",
         options = ops;
 
@@ -542,7 +532,7 @@ var printPopup = function(d) {
         date = moment(d.data_presubentro, "DD/MM/YYYY").format("DD/MM/YYYY");
 	if (!moment(date).isValid()) console.log(d.data_presubentro);
         i = 1;
-    } 
+    }
     text =  i==2?Resources.GetWithArgs("statusInactiveText",[d.label]):Resources.GetWithArgs("statusText",[d.label, options[i].text,date]);
     return (
         '<div class="row mx-auto mb-4 p-4 popup-class "><img class="pl-0 pr-2" src="' + options[i].icon + '">' +
@@ -551,7 +541,7 @@ var printPopup = function(d) {
 }
 
 var printPopupMap = function(d) {
-    var i = 2, //default value: d.data_subentro === undefined && d.data_presubentro === undefined 
+    var i = 2, //default value: d.data_subentro === undefined && d.data_presubentro === undefined
         date = "",
         options = ops;
 
@@ -563,7 +553,7 @@ var printPopupMap = function(d) {
         date = moment(d.data_presubentro, "DD/MM/YYYY").format("DD/MM/YYYY");
 	if (!moment(date).isValid()) console.log(d.data_presubentro);
         i = 1;
-    } 
+    }
     // return "<p style='float: left;'><img src=" + options[i].icon + "></p>Il <b>comune di " + d.label + "</b><br> è " + options[i].text + date;
     return (
         '<div><img class="pl-0 pr-2" src="' + options[i].icon + '">' +

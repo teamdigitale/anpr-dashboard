@@ -6,7 +6,7 @@ Resources.populationAIRE = {"it":"Popolazione AIRE","en":"Population AIRE"}
 Resources.populationMigrated = {"it":"Popolazione subentrata","en":"Population migrated"}
 Resources.populationMigratedInfo = {"it":"Totale della popolazione dei comuni che hanno ultimato la migrazione ad ANPR e quindi operano nella loro attività quotidiana direttamente sulla piattaforma. Per i cittadini di questi comuni ANPR è la sorgente di informazioni anagrafiche.","en":"Total population of municipalities that have already migrated to ANPR and their daily operations are performed on ANPR. For their citizens ANPR is already the source of information."}
 Resources.populationPreMigrated = {"it":"Popolazione in pre subentro","en":"Population in pre migration"}
-Resources.populationPreMigratedInfo = {"it":"Popolazione in pre subentro","en":"Total population of municipalities that have already sent their registry office to ANPR for validation and are doing integration test, cleaning their data or are planning to go live in production at an established date."}
+Resources.populationPreMigratedInfo = {"it":"Totale della popolazione dei comuni che hanno già inviato la loro anagrafe (APR locale) ad ANPR per la validazione e stanno compiendo test di integrazione, bonificando i dati anagrafici o che non hanno ancora pianificato una data definitiva per il passaggio in produzione.","en":"Total population of municipalities that have already sent their registry office to ANPR for validation and are doing integration test, cleaning their data or are planning to go live in production at an established date."}
 Resources.populatioAndMunicMigrated = {"it":"Popolazione e comuni subentrati","en":"Population and municipalities migrated"}
 Resources.populatioAndMunicPreMigrated = {"it":"Popolazione e comuni in pre subentro","en":"Population and municipalities in pre migration"}
 
@@ -17,7 +17,7 @@ Resources.municipalitiesMigratedInfo = {"it":"Comuni che hanno ultimato la migra
 Resources.municipalitiesPreMigrated={"it":"Comuni in pre subentro","en":"Municipalities in pre migration"}
 Resources.municipalitiesPreMigratedInfo={"it":"Numero comuni che hanno già inviato la loro anagrafe (APR locale) ad ANPR per la validazione e stanno compiendo test di integrazione, bonificando i dati anagrafici o che non hanno ancora pianificato una data definitiva per il passaggio in produzione.","en":"Number of municipalities that have already sent their registry office to ANPR for validation and are doing integration test, cleaning their data or are planning to go live in production at an established date."}
 
-//Tables 
+//Tables
 Resources.municipalityName= {"it":"Nome del Comune","en":"Name"}
 Resources.municipalityProvince= {"it":"Provincia","en":"Province"}
 Resources.municipalityRegion= {"it":"Regione","en":"Region"}
@@ -70,11 +70,11 @@ Resources.Get = function(label){
 }
 Resources.GetLang = function(){
     return lang = Resources.getParameterByName("lang")=="en"?"en":"it";
-    
+
 }
 /**Accepts an array of arguments */
 Resources.GetWithArgs = function(label,args){
-    
+
     var _text = Resources.Get(label)
     for (i = 0;i<args.length;i++){
         _text= _text.replace("?",args[i]);

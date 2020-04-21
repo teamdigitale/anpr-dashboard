@@ -7,7 +7,7 @@ references:
   working_directory: /tmp/gh-pages
   defaults: &defaults
     docker:
-      - image: circleci/node:8.1.4-browsers
+      - image: node:12.6-alpine
 
   # Set the permissions needed to install node modules
   npm_permissions: &npm_permissions
@@ -21,7 +21,6 @@ references:
       command: |
         npm install
         npm install gulp-cli -g
-        npm install gulp -D
   # Update dashboard data files
   update_dashboard_data: &update_dashboard_data
     run:

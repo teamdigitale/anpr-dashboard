@@ -3,7 +3,7 @@
 # content in production.
 
 # Variables definition
-ARG NODE_VERSION=12.6-alpine
+ARG NODE_VERSION=12.6
 
 # Get development image
 FROM node:${NODE_VERSION}

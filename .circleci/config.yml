@@ -7,21 +7,14 @@ references:
   working_directory: /tmp/gh-pages
   defaults: &defaults
     docker:
-      - image: circleci/node:8.1.4-browsers
+      - image: node:12.6
 
-  # Set the permissions needed to install node modules
-  npm_permissions: &npm_permissions
-    run:
-      name: set-user-permissions
-      command: sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}
   # Install gulp & deps
   npm_install: &npm_install
     run:
       name: install-npm-dependencies
       command: |
         npm install
-        npm install gulp-cli -g
-        npm install gulp -D
   # Update dashboard data files
   update_dashboard_data: &update_dashboard_data
     run:
@@ -38,17 +31,17 @@ references:
           fi
         fi
 
-        git commit -a  -m "Automated deployment to GitHub Pages: ${CIRCLE_SHA1}" || echo "."
+        git commit -a  -m "Automated deployment to GitHub Pages: ${CIRCLE_SHA1} [ci skip]"
         git push origin $CIRCLE_BRANCH
   # Optimize site files with gulp
   gulp_build: &gulp_build
     run:
       name: gulp-build
       command: |
-        gulp clean
-        gulp
+        npx gulp clean
+        npx gulp
         git add docs
-        git commit docs -m "Automated deployment to GitHub Pages: ${CIRCLE_SHA1}" || echo "."
+        git commit docs -m "Automated deployment to GitHub Pages: ${CIRCLE_SHA1} [ci skip]"
         git push origin $CIRCLE_BRANCH
   create_cname: &create_cname
     run:
@@ -56,7 +49,7 @@ references:
       command: |
         echo "stato-migrazione.anpr.it" > docs/CNAME
         git add docs/CNAME
-        git commit docs/CNAME -m "Automated deployment to GitHub Pages: ${CIRCLE_SHA1}" || echo "."
+        git commit docs/CNAME -m "Automated deployment to GitHub Pages: ${CIRCLE_SHA1} [ci skip]"
         git push origin $CIRCLE_BRANCH
 
 version: 2
@@ -67,7 +60,6 @@ jobs:
       # Deploy the site to GitHub Pages
       #- add_ssh_keys: *add_ssh_keys
       - checkout
-      - << : *npm_permissions
       - << : *npm_install
       - << : *update_dashboard_data
       - << : *gulp_build
@@ -76,6 +68,15 @@ jobs:
 # This workflow will update the site every hour
 workflows:
   version: 2
+  # For each commit on the master branch
+  # deploy to VMs and to gh-pages
+  on-master-commit-update-dashboard:
+    jobs:
+      - update:
+          filters:
+            branches:
+              only:
+                - master
   update-dashboard:
     triggers:
       - schedule:

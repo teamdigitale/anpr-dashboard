@@ -1,12 +1,12 @@
 {
-  "name": "local-minifier",
+  "name": "anpr-dashboard",
   "version": "0.1.0",
-  "description": "A local environment to minify CSS, JS, & HTML files",
-  "license": "Apache-2.0",
-  "author": "Amardeep Rai",
+  "description": "ANPR Dashboard (stato-migrazione)",
+  "license": "AGPL-3.0-or-later",
+  "author": "Team per la trasformazione digitale",
   "repository": {
     "type": "git",
-    "url": "https://github.com/amardeeprai/local-minifier"
+    "url": "https://github.com/teamdigitale/anpr-dashboard"
   },
   "devDependencies": {
     "del": "^5.1.0",
@@ -23,7 +23,7 @@
     "http-server": "^0.12.1"
   },
   "engines": {
-    "node": ">=0.12.0"
+    "node": ">=8.11.3"
   },
   "scripts": {
     "build": "gulp",

@@ -9,19 +9,18 @@
     "url": "https://github.com/amardeeprai/local-minifier"
   },
   "devDependencies": {
-    "del": "^2.0.2",
-    "gulp": "^3.9.1",
+    "del": "^5.1.0",
+    "gulp": "^4.0.2",
     "gulp-autoprefixer": "latest",
     "gulp-concat": "latest",
-    "gulp-csso": "^2.0.0",
-    "gulp-htmlmin": "^3.0.0",
+    "gulp-csso": "^4.0.1",
+    "gulp-htmlmin": "^5.0.1",
     "gulp-less": "latest",
     "gulp-rev": "latest",
     "gulp-rev-delete-original": "latest",
-    "gulp-rev-rewrite": "2.0.0",
+    "gulp-rev-rewrite": "3.0.3",
     "gulp-uglify": "latest",
-    "http-server": "^0.12.1",
-    "run-sequence": "^1.2.2"
+    "http-server": "^0.12.1"
   },
   "engines": {
     "node": ">=0.12.0"

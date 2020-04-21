@@ -30,7 +30,9 @@ The dashboard website is currently deployed through [GitHub pages](https://githu
 
 ## Run and test the application locally
 
-The paragraph describes how to run the application locally for development purposes.
+For development purposes the project can also be run locally, directly on the developer machine, or in form of a Docker container. Following, both procedures are explained.
+
+### Run the project directly on the local machine
 
 ```shell
 # Install dependencies
@@ -42,6 +44,30 @@ npm start
 ```
 
 You should now be able to see the dashboard opening a browser and pointing it to `http://localhost:8080`.
+
+### Run the project as a Docker container
+
+A `Dockerfile` and a `docker-compose.yaml` files are in the root of this repository.
+
+Bring up the development environment in form of container, running:
+
+```shell
+docker-compose up [-d] [--build]
+```
+
+where:
+
+* *-d* executes the container in background
+
+* *--build* forces the container to re-build
+
+The website should now be accessible on port *8080*.
+
+To bring down the test environment and remove the containers use
+
+```shell
+docker-compose down
+```
 
 ## Update data sources and automation
 

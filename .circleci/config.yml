@@ -20,7 +20,6 @@ references:
       name: install-npm-dependencies
       command: |
         npm install
-        npm install gulp-cli -g
   # Update dashboard data files
   update_dashboard_data: &update_dashboard_data
     run:
@@ -44,8 +43,8 @@ references:
     run:
       name: gulp-build
       command: |
-        gulp clean
-        gulp
+        npx gulp clean
+        npx gulp
         git add docs
         git commit docs -m "Automated deployment to GitHub Pages: ${CIRCLE_SHA1}" || echo "."
         git push origin $CIRCLE_BRANCH

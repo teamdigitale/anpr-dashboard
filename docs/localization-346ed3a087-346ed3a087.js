@@ -17,6 +17,10 @@ Resources.municipalitiesMigratedInfo = {"it":"Comuni che hanno ultimato la migra
 Resources.municipalitiesPreMigrated={"it":"Comuni in pre subentro","en":"Municipalities in pre migration"}
 Resources.municipalitiesPreMigratedInfo={"it":"Numero comuni che hanno già inviato la loro anagrafe (APR locale) ad ANPR per la validazione e stanno compiendo test di integrazione, bonificando i dati anagrafici o che non hanno ancora pianificato una data definitiva per il passaggio in produzione.","en":"Number of municipalities that have already sent their registry office to ANPR for validation and are doing integration test, cleaning their data or are planning to go live in production at an established date."}
 
+//Aggregates
+Resources.dataAggrByRegion = {"it":"Dati aggregati per regione","en":"Data aggregates by region"}
+Resources.dataAggrByProvince = {"it":"Dati aggregati per provincia","en":"Data aggregates by province"}
+
 //Tables
 Resources.municipalityName= {"it":"Nome del Comune","en":"Name"}
 Resources.municipalityProvince= {"it":"Provincia","en":"Province"}

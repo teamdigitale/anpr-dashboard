@@ -778,9 +778,9 @@
       "dev": true
     },
     "caniuse-lite": {
-      "version": "1.0.30001058",
-      "resolved": "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001058.tgz",
-      "integrity": "sha512-UiRZmBYd1HdVVdFKy7PuLVx9e2NS7SMyx7QpWvFjiklYrLJKpLd19cRnRNqlw4zYa7vVejS3c8JUVobX241zHQ==",
+      "version": "1.0.30001059",
+      "resolved": "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001059.tgz",
+      "integrity": "sha512-oOrc+jPJWooKIA0IrNZ5sYlsXc7NP7KLhNWrSGEJhnfSzDvDJ0zd3i6HXsslExY9bbu+x0FQ5C61LcqmPt7bOQ==",
       "dev": true
     },
     "caseless": {

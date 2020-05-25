@@ -1,7 +1,8 @@
-# Javascript Node CircleCI 2.0 configuration file
+# Javascript Node CircleCI 2.1 configuration file
 #
-# Check https://circleci.com/docs/2.0/ for more details
-#
+# Check https://circleci.com/docs/reference-2-1/#section=configuration for more details
+
+version: 2.1
 
 references:
   working_directory: /tmp/gh-pages
@@ -52,7 +53,15 @@ references:
         git commit docs/CNAME -m "Automated deployment to GitHub Pages: ${CIRCLE_SHA1} [ci skip]"
         git push origin $CIRCLE_BRANCH
 
-version: 2
+  # In order to use this, the integration needs to be
+  # setup first under CircleCI app directory and a
+  # SLACK_WEBOOK environment variable needs to be set
+  # in the project settings
+  notify_on_failure: &notify_on_failure
+    slack/status:
+      fail_only: true
+      only_for_branches: master
+
 jobs:
   update:
     <<: *defaults
@@ -64,6 +73,10 @@ jobs:
       - << : *update_dashboard_data
       - << : *gulp_build
       - << : *create_cname
+      - << : *notify_on_failure
+
+orbs:
+  slack: circleci/slack@3.4.2
 
 # This workflow will update the site every hour
 workflows:

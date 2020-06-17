@@ -20,7 +20,7 @@
     "gulp-rev-delete-original": "latest",
     "gulp-rev-rewrite": "3.0.3",
     "gulp-uglify": "latest",
-    "http-server": "^0.12.1"
+    "http-server": "^0.12.3"
   },
   "engines": {
     "node": ">=0.12.0"

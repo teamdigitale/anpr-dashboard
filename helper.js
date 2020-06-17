@@ -240,7 +240,7 @@ var anprAggregate = [{
   }
 }];
 
-var createSummaryBoxes = function (summaries) {
+var createSummaryBoxes = function (summaries, last_update) {
 
   var info = d3.select("body")
     .append("div")
@@ -266,6 +266,11 @@ var createSummaryBoxes = function (summaries) {
     value: summaries.com_sub,
     label: Resources.Get("municipalitiesMigrated"),
     description: Resources.Get("municipalitiesMigratedInfo")
+  }, {
+    id: "last_update",
+    value: moment(last_update, "X").format("DD/MM/YYYY HH:mm"),
+    label: Resources.Get("lastUpdate"),
+    description: Resources.Get("lastUpdateInfo")
   }
   ];
 

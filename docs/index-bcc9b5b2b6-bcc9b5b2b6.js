@@ -29,7 +29,7 @@ fetch(dataUrl)
     console.log("data elaborated and downloaded");
 
     //load summaries
-    createSummaryBoxes(json.summaries);
+    createSummaryBoxes(json.summaries, json.last_update);
 
     //load searchbar
     var properties = json.geojson.features.map(function (d) { return d.properties });

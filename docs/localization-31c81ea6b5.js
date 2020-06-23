@@ -21,6 +21,10 @@ Resources.municipalitiesPreMigratedInfo={"it":"Numero comuni che hanno già invi
 Resources.dataAggrByRegion = {"it":"Dati aggregati per regione","en":"Data aggregates by region"}
 Resources.dataAggrByProvince = {"it":"Dati aggregati per provincia","en":"Data aggregates by province"}
 
+//LastUpdate
+Resources.lastUpdate = {"it":"Ultimo aggiornamento","en":"Last update"}
+Resources.lastUpdateInfo = {"it":"Data ultimo aggiornamento dei dati.","en":"Data last update."}
+
 //Tables
 Resources.municipalityName= {"it":"Nome del Comune","en":"Name"}
 Resources.municipalityProvince= {"it":"Provincia","en":"Province"}

@@ -13,7 +13,7 @@ Resources.populatioAndMunicPreMigrated = {"it":"Popolazione e comuni in pre sube
 //Municipalities
 Resources.municipalities = {"it":"Comuni","en":"Municipalities"}
 Resources.municipalitiesMigrated = {"it":"Comuni subentrati","en":"Municipalities migrated"}
-Resources.municipalitiesMigratedInfo = {"it":"Comuni che hanno ultimato la migrazione ad ANPR e quindi operano nella loro attività quotidiana direttamente sulla piattaforma. Per i cittadini di questi comuni ANPR è la sorgente di informazioni anagrafiche.","en":"Number of municipalities that have already migrated to ANPR and their daily operations are performed on ANPR. For their citizens ANPR is already the source of information."}
+Resources.municipalitiesMigratedInfo = {"it":"Comuni che hanno ultimato la migrazione ad ANPR e quindi operano nella loro attività quotidiana direttamente sulla piattaforma. Per i cittadini di questi comuni ANPR è la sorgente di informazioni anagrafiche. Il numero visualizzato è calcolato al netto dei comuni cessati o confluiti in altri comuni.","en":"Number of municipalities that have already migrated to ANPR and their daily operations are performed on ANPR. For their citizens ANPR is already the source of information. The number displayed is calculated net of municipalities that have ceased or have been merged into other municipalities."}
 Resources.municipalitiesPreMigrated={"it":"Comuni in pre subentro","en":"Municipalities in pre migration"}
 Resources.municipalitiesPreMigratedInfo={"it":"Numero comuni che hanno già inviato la loro anagrafe (APR locale) ad ANPR per la validazione e stanno compiendo test di integrazione, bonificando i dati anagrafici o che non hanno ancora pianificato una data definitiva per il passaggio in produzione.","en":"Number of municipalities that have already sent their registry office to ANPR for validation and are doing integration test, cleaning their data or are planning to go live in production at an established date."}
 
@@ -89,5 +89,4 @@ Resources.GetWithArgs = function(label,args){
     }
     return _text;
 }
-
 

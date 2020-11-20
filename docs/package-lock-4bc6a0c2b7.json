@@ -1277,9 +1277,9 @@
       }
     },
     "electron-to-chromium": {
-      "version": "1.3.602",
-      "resolved": "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.3.602.tgz",
-      "integrity": "sha512-+JbC10U8vpKAqAtrEqORdzaWewRgEj5DY+QQNyP/dxDTshPqqgpjrvt6smewKS/5F3vT5prYgg7/VTxb5FROjw==",
+      "version": "1.3.603",
+      "resolved": "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.3.603.tgz",
+      "integrity": "sha512-J8OHxOeJkoSLgBXfV9BHgKccgfLMHh+CoeRo6wJsi6m0k3otaxS/5vrHpMNSEYY4MISwewqanPOuhAtuE8riQQ==",
       "dev": true
     },
     "end-of-stream": {

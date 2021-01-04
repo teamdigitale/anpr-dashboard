@@ -3717,9 +3717,9 @@
       }
     },
     "node-releases": {
-      "version": "1.1.68",
-      "resolved": "https://registry.npmjs.org/node-releases/-/node-releases-1.1.68.tgz",
-      "integrity": "sha512-7R8W00OWB5mjUpVFIN6lybhHwsAJVoipjo8MaFtIGRhZ2KeE01VD5ap4RVjLtYEnPKeX0PH14p1OhQVOFTikDQ==",
+      "version": "1.1.69",
+      "resolved": "https://registry.npmjs.org/node-releases/-/node-releases-1.1.69.tgz",
+      "integrity": "sha512-DGIjo79VDEyAnRlfSqYTsy+yoHd2IOjJiKUozD2MV2D85Vso6Bug56mb9tT/fY5Urt0iqk01H7x+llAruDR2zA==",
       "dev": true
     },
     "normalize-package-data": {

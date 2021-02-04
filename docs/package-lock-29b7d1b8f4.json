@@ -1053,12 +1053,12 @@
       }
     },
     "copy-anything": {
-      "version": "2.0.1",
-      "resolved": "https://registry.npmjs.org/copy-anything/-/copy-anything-2.0.1.tgz",
-      "integrity": "sha512-lA57e7viQHOdPQcrytv5jFeudZZOXuyk47lZym279FiDQ8jeZomXiGuVf6ffMKkJ+3TIai3J1J3yi6M+/4U35g==",
+      "version": "2.0.3",
+      "resolved": "https://registry.npmjs.org/copy-anything/-/copy-anything-2.0.3.tgz",
+      "integrity": "sha512-GK6QUtisv4fNS+XcI7shX0Gx9ORg7QqIznyfho79JTnX1XhLiyZHfftvGiziqzRiEi/Bjhgpi+D2o7HxJFPnDQ==",
       "dev": true,
       "requires": {
-        "is-what": "^3.7.1"
+        "is-what": "^3.12.0"
       }
     },
     "copy-descriptor": {

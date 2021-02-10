@@ -26,8 +26,6 @@ fetch(dataUrl)
     return response.json();
   })
   .then(function (json) {
-    console.log("data elaborated and downloaded");
-
     //load summaries
     createSummaryBoxes(json.summaries, json.last_update);
 
@@ -205,97 +203,3 @@ fetch(dataUrl)
     });
 
   });
-
-fetch(predictionUrl)
-  .then(function (response) { return response.json() })
-  .then(function (json) {
-    var dates = json.dates.map(function (date) { return moment(date) })
-    let cumsum = []
-    json.populations.reduce(function (a, b, i) {
-      return cumsum[i] = a + b;
-    }, 0)
-    var populations = cumsum.slice(0, json.populations.length - 11)
-    var predictions = cumsum.map(function (pop, index) {
-      if (index < cumsum.length - 12) {
-        return null
-      }
-      return pop
-    })
-    var totalPopPredictions = cumsum[cumsum.length - 1]
-    d3.select("#" + "predictions")
-      .append("div")
-      .style("font-size", "35px")
-      .style("font-weight", "bold")
-      .html(totalPopPredictions.toLocaleString("en"))
-      .attr("dy", "0em");
-    d3.select("#" + "predictions")
-      .append("span")
-      .style("font-size", "14px")
-      .html("Previsione a 12 mesi" + "&nbsp")
-    /*	d3.select("#" + "predictions")
-        .append("i")
-        .attr("id", "predictions" + "_i")
-      .attr("class", "fas fa-info-circle fa-1x")
-        .style("visibility", "hidden");
-      d3.select("#" + "predictions")
-        .on("mouseover", function()  {
-          return d3.select("#" + "predictions" + "_i").style("visibility", "visible");
-        })
-        .on("mouseout", function() {
-          return d3.select("#" + "predictions" + "_i")
-            .style("visibility", "hidden");
-        });
-      d3.select("#" + "predictions" + "_i")
-        .on("mouseover", function() {
-          info.transition()
-            .duration(100)
-            .style("opacity", 1);
-          info.html("Previsione popolazione subentrata nei prossimi 12 mesi")
-            .style("left", (d3.event.pageX) + "px")
-            .style("top", (d3.event.pageY - 28) + "px");
-        })
-        .on("mouseout", function() {
-          info.transition()
-            .duration(500)
-        .style("opacity", 0);
-        }); */
-
-    new Chart(document.getElementById("myChart"), {
-      type: 'line',
-      data: {
-        labels: dates,
-        datasets: [{
-          data: populations,
-          label: Resources.Get("population"),
-          borderColor: "#3e95cd",
-          backgroundColor: "#3e95cd" //,
-          // fill: true
-        },
-        {
-          data: predictions,
-          label: Resources.Get("expectedPopulation"),
-          borderColor: "#5FCE79", //,
-          backgroundColor: "#5FCE79"//"#8e5ea2"
-          //  fill: true
-        },
-        ]
-      },
-      options: {
-        title: {
-          display: true,
-          text: Resources.Get("expectedPopulationInfo"),
-
-        },
-        stacked: true,
-        scales: {
-          xAxes: [{
-            type: 'time',
-            time: {
-              unit: 'month'
-            }
-          }]
-        }
-      }
-    });
-  });
-

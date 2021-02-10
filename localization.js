@@ -51,11 +51,7 @@ Resources.supplierMigrationPerc ={"it":"Percentuale di comuni subentrati","en":"
 Resources.supplierPreMigrationPerc ={"it":"Percentuale di comuni in pre subentro","en":"Municipalities in pre migration (%)"}
 Resources.supplierInactivePerc ={"it":"Percentuale Comuni Inattivi","en":"Inactive (%)"}
 
-Resources.expectedPopulation={"it":"Popolazione prevista","en":"Expected population"}
-Resources.expectedPopulationInfo={"it":"Popolazione subentrata e prevista prossimi 12 mesi","en":"Migrated and expected population in the next 12 months"}
-
 //html page
-Resources.forecast12MonthsInfo={"it":"Previsioni prossimi 12 mesi","en":"Next 12 months prevision"}
 Resources.supplierInfo={"it":"Fornitori - Percentuale Comuni Subentrati, In Presubentro, Inattivi","en":"Providers - municipalities migrates, in pre migration, inactive (%)"}
 Resources.searchInfo ={"it":"A che punto è il tuo comune?","en":"How's your municipality?"}
 Resources.migrationState ={"it":"ANPR - Stato della migrazione","en":"ANPR - Migration State"}

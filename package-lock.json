@@ -697,9 +697,9 @@
       "dev": true
     },
     "caniuse-lite": {
-      "version": "1.0.30001195",
-      "resolved": "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001195.tgz",
-      "integrity": "sha512-JMviRgau9XQKsdEVEDd2ZmhBLv2yGFXjeriS2WAc88yqbYtjl4uFDZhVMxWE06qB2XTRnljB6PSosdazMeLyrg==",
+      "version": "1.0.30001196",
+      "resolved": "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001196.tgz",
+      "integrity": "sha512-CPvObjD3ovWrNBaXlAIGWmg2gQQuJ5YhuciUOjPRox6hIQttu8O+b51dx6VIpIY9ESd2d0Vac1RKpICdG4rGUg==",
       "dev": true
     },
     "center-align": {

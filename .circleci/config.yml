@@ -15,24 +15,6 @@ references:
       name: install-npm-dependencies
       command: |
         npm install
-  # Update dashboard data files
-  update_dashboard_data: &update_dashboard_data
-    run:
-      name: Update dashboard data
-      command: |
-        git config --global user.email no-reply@teamdigitale.governo.it
-        git config --global user.name "Deploy Bot"
-        git pull
-
-        if [ `curl -s -w "%{http_code}" --compress -o /tmp/dashboardData.json https://dashboard.anpr.it/api/dashboard/data.json` = "200" ]; then
-          if [ $(stat --printf="%s" /tmp/dashboardData.json) -gt 2000000 ]; then
-            echo "dashboard data updated" && \
-            cp /tmp/dashboardData.json .
-          fi
-        fi
-
-        git commit -a  -m "Automated deployment to GitHub Pages: ${CIRCLE_SHA1} [ci skip]"
-        git push origin $CIRCLE_BRANCH
   # Optimize site files with gulp
   gulp_build: &gulp_build
     run:
@@ -61,7 +43,6 @@ jobs:
       #- add_ssh_keys: *add_ssh_keys
       - checkout
       - << : *npm_install
-      - << : *update_dashboard_data
       - << : *gulp_build
       - << : *create_cname
 
@@ -77,13 +58,3 @@ workflows:
             branches:
               only:
                 - master
-  update-dashboard:
-    triggers:
-      - schedule:
-          cron: "35 * * * *"
-          filters:
-            branches:
-              only:
-                - master
-    jobs:
-      - update

@@ -76,7 +76,7 @@ gulp.task('revision', gulp.series('scripts', 'styles', () => {
 gulp.task('revRewrite', gulp.series('revision', () => {
   const manifest = gulp.src(pubPath + '/rev-manifest.json');
 
-  return gulp.src([pubPath + '/index.html'])
+  return gulp.src([pubPath + '/index.html', pubPath + '/index-prev.html'])
     .pipe(revRewrite({ manifest }))
     .pipe(gulp.dest(pubFolder));
 }));

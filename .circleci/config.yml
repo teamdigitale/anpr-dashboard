@@ -16,23 +16,15 @@ references:
       command: |
         npm install
   # Optimize site files with gulp
-  gulp_build: &gulp_build
+  gulp_build_and_publish: &gulp_build_and_publish
     run:
       name: gulp-build
       command: |
         npx gulp clean
         npx gulp
-        git add docs
-        git commit docs -m "Automated deployment to GitHub Pages: ${CIRCLE_SHA1} [ci skip]"
-        git push origin $CIRCLE_BRANCH
-  create_cname: &create_cname
-    run:
-      name: create-cname
-      command: |
-        echo "stato-migrazione.anpr.it" > docs/CNAME
-        git add docs/CNAME
-        git commit docs/CNAME -m "Automated deployment to GitHub Pages: ${CIRCLE_SHA1} [ci skip]"
-        git push origin $CIRCLE_BRANCH
+
+        echo stato-migrazione.anpr.it > docs/CNAME
+        npx gh-pages -m 'Automated deployment: ${CIRCLE_SHA1} [ci skip]' -u 'Deploy Bot <no-reply@teamdigitale.governo.it>' -d docs
 
 version: 2
 jobs:
@@ -43,8 +35,7 @@ jobs:
       #- add_ssh_keys: *add_ssh_keys
       - checkout
       - << : *npm_install
-      - << : *gulp_build
-      - << : *create_cname
+      - << : *gulp_build_and_publish
 
 # This workflow will update the site every hour
 workflows:

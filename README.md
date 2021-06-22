@@ -1,4 +1,6 @@
-# ANPR Dashboard (stato-migrazione)
+# (OLD) ANPR Dashboard (stato-migrazione)
+
+⚠️  This is the old dashboard and it's not developed anymore ⚠️
 
 The ANPR dashboard is a static, web application that reads data from two local json files ([dashboardData.json](dashboardData.json) and [previsioni.json](previsioni.json)) and represents them in form of charts in a web page.
 
